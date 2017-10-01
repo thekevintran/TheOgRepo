@@ -23,8 +23,9 @@ public class MainActivity extends Activity {
         // Create testing data
 
         List<ListItem> list = new ArrayList<ListItem>();
+        ListItem item;
         for(int i=1; i<=50; i++){
-            ListItem item = new ListItem();
+            item = new ListItem();
             item.image = defaultImage;
             item.name = "Title " + i;
             item.comment = "::Date::";
