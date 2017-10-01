@@ -3,6 +3,7 @@ package edu.wit.mobileapp.mydoggrid;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -20,7 +21,28 @@ public class MainActivity extends Activity {
         defaultImage =
                 decodeResource(getResources(), R.drawable.default_image);
         // Create testing data
+
         List<ListItem> list = new ArrayList<ListItem>();
+        for(int i=1; i<=50; i++){
+            ListItem item[] = new ListItem();
+            item[i].image = defaultImage;
+            item[i].name = "Title " + i;
+            item[i].comment = "::Date::";
+            list.add(item[i]);
+        }
+
+        //Create GridItemAdapter
+        Log.v("Lab4", "Create GridItemAdapter");
+        GridItemAdapter adapter;
+        adapter = new GridItemAdapter(this, 0, list);
+//        Assign ListItem to GridView
+        Log.v("Lab4", "Assign GridItemAdapter adapter to  gridView");
+        GridView gridView = (GridView)findViewById(R.id.gridView);
+        gridView.setAdapter(adapter);
+    }
+}
+
+        /*TESTING DATA
         ListItem item1 = new ListItem();
         item1.image = defaultImage;
         item1.name = "David";
@@ -46,21 +68,4 @@ public class MainActivity extends Activity {
         item5.name = "Christine";
         item5.comment = "Meow meow. I'm a cat";
         list.add(item5);
-
-        // Create ListItemAdapter
-//        ListItemAdapter adapter;
-//        adapter = new ListItemAdapter(this, 0, list);
-        // Assign ListItemAdapter to ListView
-//        ListView listView = (ListView)findViewById(R.id.ListView01);
-//        listView.setAdapter(adapter);
-
-        //Create GridItemAdapter
-//        Log.v("Lab4", "Create GridItemAdapter");
-        GridItemAdapter adapter;
-        adapter = new GridItemAdapter(this, 0, list);
-//        Assign ListItem to GridView
-//        Log.v("Lab4", "Assign GridItemAdapter adapter to  gridView");
-        GridView gridView = (GridView)findViewById(R.id.gridView);
-        gridView.setAdapter(adapter);
-    }
-}
+        */
