@@ -24,11 +24,11 @@ public class MainActivity extends Activity {
 
         List<ListItem> list = new ArrayList<ListItem>();
         for(int i=1; i<=50; i++){
-            ListItem item[] = new ListItem();
-            item[i].image = defaultImage;
-            item[i].name = "Title " + i;
-            item[i].comment = "::Date::";
-            list.add(item[i]);
+            ListItem item = new ListItem();
+            item.image = defaultImage;
+            item.name = "Title " + i;
+            item.comment = "::Date::";
+            list.add(item);
         }
 
         //Create GridItemAdapter
