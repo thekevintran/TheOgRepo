@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/modelLenovoText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="123dp"
+        android:text="Lenovo Logo Here"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/modelLenovoText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/modelLenovoText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:text="Pick a Model:"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonModelLenovo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go"
+        android:layout_alignBaseline="@+id/modelLenovoText2"
+        android:layout_alignBottom="@+id/modelLenovoText2"
+        android:layout_toEndOf="@+id/radioGroupLenovo" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupLenovo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonModelLenovo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text='ThinkPad P50' />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButton1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:text='ThinkPad Yoga P40' />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioButton2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:text='Thinkpad W541' />
+
+    </RadioGroup>
+
+
+</RelativeLayout>
