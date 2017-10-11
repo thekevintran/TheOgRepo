@@ -1,7 +1,9 @@
 package edu.wit.mobileapp.techspotinventory1;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "Inventory App";
@@ -18,13 +21,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         brandSelectionButton();
-
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
         // Open the database. If it doesn't exist, create it.
-        SQLiteDatabase db;
-        db = SQLiteDatabase.openOrCreateDatabase(path, null);
-        /*
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(path, null);;
+
+        //Check for table existence, if exists = skip table creation
+        String TABLE_NAME = "laptopSpec";
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"
+                + TABLE_NAME + "'", null);
+        if(cursor!=null) {
+            if(cursor.getCount()>0) { //table already exists
+                //show toast
+                Toast.makeText(this, "bam", Toast.LENGTH_SHORT).show();
+                cursor.close();
+                return;
+            }
+            cursor.close();
+        }
+
+        //create table and insert normally
+        else{
+
         // Create table: laptopSpec
         String sql = "CREATE TABLE IF NOT EXISTS laptopSpec" +
          "(_id INTEGER PRIMARY KEY AUTOINCREMENT, model TEXT, processor TEXT, graphics TEXT, memory TEXT);";
@@ -67,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         values.put("graphics", "GeForce 1080Ti");
         values.put("memory", "32GB ");
         db.insert("laptopSpec", null, values);
-        */
+        }
 
 
         //Close the database

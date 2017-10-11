@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class ModelApple extends AppCompatActivity{
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private final String TAG = "Inventory App";
 
     @Override
@@ -31,11 +35,19 @@ public class ModelApple extends AppCompatActivity{
                 Log.i(TAG, "ModelApple GoButton clicked");
                 Toast.makeText(getApplicationContext(), "Launching Lenovo Model Specifications!", Toast.LENGTH_SHORT).show();
 
+                //Radio group, buttons
+                radioGroup = (RadioGroup) findViewById(R.id.radioGroupApple);
+                int radiobtn_id = radioGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton) findViewById(radiobtn_id);
+                String modelSelectionBtn = radioButton.getText().toString();
+
                 //Launch the LaptopSpec Activity
+                //Bundle up model selection into intent
                 Intent intent = LaptopSpec.makeIntent(ModelApple.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("modelSelection", modelSelectionBtn);
+                intent.putExtras(bundle);
                 startActivity(intent);
-                //Kill Model Apple... or not
-                //finish();
             }
         });
     }
