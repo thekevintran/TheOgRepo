@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.wit.mobileapp.bodycalculator.Calculator">
+
+    <TextView
+        android:id="@+id/mainactivity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="141dp"
+        android:text="Calculate Standard Weight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gender_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/mainactivity_title"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="26dp"
+        android:text="Gender:" />
+
+    <TextView
+        android:id="@+id/height_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height:           Feet           Inches"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/gender_txt" />
+
+    <EditText
+        android:id="@+id/mainFeet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/height_txt"
+        android:layout_alignBottom="@+id/height_txt"
+        android:layout_alignStart="@+id/mainactivity_title"
+        android:layout_marginStart="12dp"
+        android:autoSizeMaxTextSize="10dp"
+        android:ems="1"
+        android:inputType="number"
+        android:maxEms="1"
+        android:maxLength="1"
+        android:singleLine="false"
+        tools:autoText="false" />
+
+    <EditText
+        android:id="@+id/mainInches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/height_txt"
+        android:layout_alignBottom="@+id/height_txt"
+        android:layout_alignEnd="@+id/height_txt"
+        android:layout_marginEnd="36dp"
+        android:autoSizeMaxTextSize="10dp"
+        android:ems="2"
+        android:inputType="number"
+        android:maxEms="2"
+        android:maxLength="2" />
+
+    <Button
+        android:id="@+id/mainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainFeet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="Calculate!" />
+
+    <RadioGroup
+        android:id="@+id/radiobtnGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/height_txt"
+        android:layout_alignStart="@+id/mainFeet"
+        android:layout_centerHorizontal="false">
+
+        <RadioButton
+            android:id="@+id/radiobtn_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/radiobtnGroup"
+            android:layout_alignTop="@+id/gender_txt"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/radiobtn_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/calculator_title"
+            android:layout_alignTop="@+id/gender_txt"
+            android:layout_weight="1"
+            android:text="Female" />
+    </RadioGroup>
+
+</RelativeLayout>
