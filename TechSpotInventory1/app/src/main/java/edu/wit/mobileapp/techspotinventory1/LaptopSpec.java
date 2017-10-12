@@ -15,8 +15,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
-
 public class LaptopSpec extends AppCompatActivity {
     private final String TAG = "Inventory App";
     String rowID = "0";
@@ -25,7 +23,6 @@ public class LaptopSpec extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laptop_specs);
-        homeButton();
 
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
@@ -44,27 +41,6 @@ public class LaptopSpec extends AppCompatActivity {
         }else if (modelSelection != null && modelSelection.equals("MacBook 15\" Late 2015")){
             rowID = "6";
         }
-
-
-
-        /*
-        // Set the path and database name
-        String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
-        // Open the database. If it doesn't exist, create it.
-        SQLiteDatabase db;
-        db = SQLiteDatabase.openDatabase(path, null);
-
-        String model = db.toString(); //this is the method to query
-        String processor = db.toString();
-        String graphics = db.toString();
-        String memory = db.toString();
-
-        Log.v(TAG, "Model:" + model + "Processor: " + processor + " Graphics: " + graphics + "Memory: " + memory);
-
-
-        db.close();
-        */
-
 
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
@@ -121,9 +97,6 @@ public class LaptopSpec extends AppCompatActivity {
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_MEMORY));
             itemIds.add(itemId);
             Log.v(TAG, "Adding " + itemId + " to itemIds");
-
-
-
         }
         cursor.close();
         /* Check for reading all elements in the list
@@ -132,7 +105,6 @@ public class LaptopSpec extends AppCompatActivity {
             Log.i("Value of element "+i,itemIds.get(i));
         }
         */
-
         TextView textModel = (TextView) findViewById(R.id.modelName);
         TextView textProcessor = (TextView) findViewById(R.id.processorName);
         TextView textGraphics = (TextView) findViewById(R.id.graphicsName);
@@ -141,9 +113,9 @@ public class LaptopSpec extends AppCompatActivity {
         textProcessor.setText(itemIds.get(2));
         textGraphics.setText(itemIds.get(3));
         textMemory.setText(itemIds.get(4));
-
-
-
+        db.close();
+        homeButton();
+        countButton(modelSelection);
     }
 
 
@@ -153,19 +125,40 @@ public class LaptopSpec extends AppCompatActivity {
 
     private void homeButton(){
         //Wire up the Home button
-        ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton1);
+        ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
         //set click listener (set what happens when it clicks)
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "HomeButton clicked");
-                Toast.makeText(getApplicationContext(), "Going Back Home!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Going Back Home!", Toast.LENGTH_SHORT).show();
 
-                //Launch the ModelApple Activity
+                //Launch the MainActivity
                 Intent intent = MainActivity.makeIntent(LaptopSpec.this);
                 startActivity(intent);
                 //Kill Laptop Spec if going back home
                 finish();
+            }
+        });
+    }
+
+    private void countButton(String ms){
+        final String modelSelection = ms;
+        //Wire up the count button
+        ImageButton btnCount = (ImageButton) findViewById(R.id.countButton);
+        //set click listener (set what happens when it clicks)
+        btnCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "CountButton clicked");
+                //Toast.makeText(getApplicationContext(), "Going to Parts Count!", Toast.LENGTH_SHORT).show();
+
+                //Launch the MainActivity
+                Intent intent = PartsCount.makeIntent(LaptopSpec.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("modelSelection", modelSelection);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

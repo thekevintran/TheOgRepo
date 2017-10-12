@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <include layout="@layout/toptoolbar"/>
     <TextView
         android:id="@+id/brandLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="140dp"
         android:text="LOGO HERE"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/specification" />
@@ -88,24 +88,5 @@
         android:layout_alignBottom="@+id/spec_memory"
         android:layout_alignStart="@+id/graphicsName"
         android:text="Memory Here" />
-
-    <ImageButton
-        android:id="@+id/homeButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_compass"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/spec_graphics"
-        android:layout_marginTop="25dp" />
-
-    <TextView
-        android:id="@+id/homeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/homeButton1"
-        android:layout_alignStart="@+id/homeButton1"
-        android:layout_below="@+id/homeButton1"
-        android:text="Home"
-        android:textAlignment="center" />
 
 </RelativeLayout>

@@ -21,6 +21,86 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         brandSelectionButton();
+
+        specTblOpenCreate();
+        inventoryTblOpenCreate();
+
+    }
+
+    private void inventoryTblOpenCreate() {
+        // Set the path and database name
+        String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
+        // Open the database. If it doesn't exist, create it.
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(path, null);;
+
+        //Check for table existence, if exists = skip table creation
+        String TABLE_NAME = "partsInventory";
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"
+                + TABLE_NAME + "'", null);
+
+        if(cursor.getCount()>0) { //table already exists
+            //show toast
+            Toast.makeText(this, "Inventory Accessed!", Toast.LENGTH_SHORT).show();
+            cursor.close();
+            return;
+        }
+        //create partsInventory table and insert normally
+        else{
+
+            // Create table: partsInventory
+            String sql = "CREATE TABLE IF NOT EXISTS partsInventory" +
+                    "(_id INTEGER PRIMARY KEY AUTOINCREMENT, model TEXT, processor INTEGER, graphics INTEGER, memory INTEGER);";
+            db.execSQL(sql);
+            // Add Data
+
+            ContentValues values = new ContentValues();
+            values.put("model", "W541");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+
+            values = new ContentValues();
+            values.put("model", "P50");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+
+            values = new ContentValues();
+            values.put("model", "P40");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+
+            values = new ContentValues();
+            values.put("model", "MacBook 15\"2017");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+
+            values = new ContentValues();
+            values.put("model", "MacBook 13\"2017");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+
+            values = new ContentValues();
+            values.put("model", "MacBook 15\"Late 2015");
+            values.put("processor", 0);
+            values.put("graphics", 0);
+            values.put("memory", 0);
+            db.insert("partsInventory", null, values);
+        }
+
+        //Close the database
+        db.close();
+    }
+
+    private void specTblOpenCreate() {
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
         // Open the database. If it doesn't exist, create it.
@@ -30,63 +110,60 @@ public class MainActivity extends AppCompatActivity {
         String TABLE_NAME = "laptopSpec";
         Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"
                 + TABLE_NAME + "'", null);
-        if(cursor!=null) {
-            if(cursor.getCount()>0) { //table already exists
-                //show toast
-                Toast.makeText(this, "bam", Toast.LENGTH_SHORT).show();
-                cursor.close();
-                return;
-            }
+
+        if(cursor.getCount()>0) { //table already exists
+            //show toast
+            //Toast.makeText(this, "Specification List Accessed!", Toast.LENGTH_SHORT).show();
             cursor.close();
+            return;
         }
 
         //create table and insert normally
         else{
 
-        // Create table: laptopSpec
-        String sql = "CREATE TABLE IF NOT EXISTS laptopSpec" +
-         "(_id INTEGER PRIMARY KEY AUTOINCREMENT, model TEXT, processor TEXT, graphics TEXT, memory TEXT);";
-        db.execSQL(sql);
-        // Add Data
+            // Create table: laptopSpec
+            String sql = "CREATE TABLE IF NOT EXISTS laptopSpec" +
+                    "(_id INTEGER PRIMARY KEY AUTOINCREMENT, model TEXT, processor TEXT, graphics TEXT, memory TEXT);";
+            db.execSQL(sql);
+            // Add Data
 
-        ContentValues values = new ContentValues();
-        values.put("model", "W541");
-        values.put("processor", "i3 Processor");
-        values.put("graphics", "GeForce 1070");
-        values.put("memory", "4GB ");
-        db.insert("laptopSpec", null, values);
+            ContentValues values = new ContentValues();
+            values.put("model", "W541");
+            values.put("processor", "i3 Processor");
+            values.put("graphics", "GeForce 1070");
+            values.put("memory", "4GB ");
+            db.insert("laptopSpec", null, values);
 
-        values.put("model", "P50");
-        values.put("processor", "i7 Processor");
-        values.put("graphics", "GeForce 1080Ti");
-        values.put("memory", "32GB ");
-        db.insert("laptopSpec", null, values);
+            values.put("model", "P50");
+            values.put("processor", "i7 Processor");
+            values.put("graphics", "GeForce 1080Ti");
+            values.put("memory", "32GB ");
+            db.insert("laptopSpec", null, values);
 
-        values.put("model", "P40");
-        values.put("processor", "i5 Processor");
-        values.put("graphics", "GeForce 970");
-        values.put("memory", "16GB ");
-        db.insert("laptopSpec", null, values);
+            values.put("model", "P40");
+            values.put("processor", "i5 Processor");
+            values.put("graphics", "GeForce 970");
+            values.put("memory", "16GB ");
+            db.insert("laptopSpec", null, values);
 
-        values.put("model", "MacBook 15\"2017");
-        values.put("processor", "i7 Processor");
-        values.put("graphics", "GeForce 1080Ti");
-        values.put("memory", "32GB ");
-        db.insert("laptopSpec", null, values);
+            values.put("model", "MacBook 15\"2017");
+            values.put("processor", "i7 Processor");
+            values.put("graphics", "GeForce 1080Ti");
+            values.put("memory", "32GB ");
+            db.insert("laptopSpec", null, values);
 
-        values.put("model", "MacBook 13\"2017");
-        values.put("processor", "i7 Processor");
-        values.put("graphics", "GeForce 1080Ti");
-        values.put("memory", "32GB ");
-        db.insert("laptopSpec", null, values);
+            values.put("model", "MacBook 13\"2017");
+            values.put("processor", "i7 Processor");
+            values.put("graphics", "GeForce 1080Ti");
+            values.put("memory", "32GB ");
+            db.insert("laptopSpec", null, values);
 
-        values.put("model", "MacBook 15\"Late 2015");
-        values.put("processor", "i7 Processor");
-        values.put("graphics", "GeForce 1080Ti");
-        values.put("memory", "32GB ");
-        db.insert("laptopSpec", null, values);
+            values.put("model", "MacBook 15\"Late 2015");
+            values.put("processor", "i7 Processor");
+            values.put("graphics", "GeForce 1080Ti");
+            values.put("memory", "32GB ");
+            db.insert("laptopSpec", null, values);
         }
-
 
         //Close the database
         db.close();
@@ -101,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "brandSelectionButton clicked");
-                Toast.makeText(getApplicationContext(), "Launching Apple Models!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Launching Apple Models!", Toast.LENGTH_SHORT).show();
 
                 //Launch the ModelApple Activity
                 Intent intent = ModelApple.makeIntent(MainActivity.this);
@@ -117,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "brandSelectionButton clicked");
-                Toast.makeText(getApplicationContext(), "Launching Lenovo Models!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Launching Lenovo Models!", Toast.LENGTH_SHORT).show();
 
                 //Launch the ModelApple Activity
                 Intent intent = ModelLenovo.makeIntent(MainActivity.this);

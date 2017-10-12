@@ -46,7 +46,7 @@ public class ModelLenovo extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "ModelLenovo GoButton clicked");
-                Toast.makeText(getApplicationContext(), "Launching Lenovo Model Specifications!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Launching Lenovo Model Specifications!", Toast.LENGTH_SHORT).show();
 
                 //Radio group, buttons
                 radioGroup = (RadioGroup) findViewById(R.id.radioGroupLenovo);

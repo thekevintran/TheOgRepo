@@ -17,4 +17,13 @@ public final class FeedReaderContract {
         public static final String COLUMN_MEMORY = "memory";
 
     }
+    public static class FeedCountEntry implements BaseColumns {
+        public static final String TABLE_NAME = "partsInventory";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_MODEL = "model";
+        public static final String COLUMN_PROCESSOR = "processor";
+        public static final String COLUMN_GRAPHICS = "graphics";
+        public static final String COLUMN_MEMORY = "memory";
+
+    }
 }

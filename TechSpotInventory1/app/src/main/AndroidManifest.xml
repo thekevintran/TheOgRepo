@@ -18,6 +18,7 @@
         <activity android:name=".ModelApple"/>
         <activity android:name=".ModelLenovo"/>
         <activity android:name=".LaptopSpec"/>
+        <activity android:name=".PartsCount"/>
     </application>
 
 </manifest>
