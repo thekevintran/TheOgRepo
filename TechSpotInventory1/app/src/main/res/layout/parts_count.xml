@@ -3,22 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/toptoolbar" />
+    <include layout="@layout/toptoolbar" />
 
         <TextView
             android:id="@+id/brandLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/specification"
+            android:layout_marginTop="151dp"
+            android:text="LOGO HERE"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="140dp"
-            android:text="LOGO HERE" />
+            android:layout_alignEnd="@+id/specification" />
 
         <TextView
             android:id="@+id/modelName"
@@ -34,13 +28,13 @@
             android:id="@+id/specification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/brandLogo"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="77dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="72dp"
             android:text="Specifications: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@+id/brandLogo"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/spec_processor"
@@ -95,13 +89,5 @@
             android:layout_alignBottom="@+id/spec_memory"
             android:layout_alignStart="@+id/graphicsCount"
             android:text="Memory Count Here" />
-
-    </RelativeLayout>
-
-    <include layout="@layout/toptoolbar"/>
-
-
-
-
 
 </RelativeLayout>

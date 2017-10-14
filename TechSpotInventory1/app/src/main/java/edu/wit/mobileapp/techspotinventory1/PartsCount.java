@@ -23,26 +23,9 @@ public class PartsCount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parts_count);
-        homeButton();
-        countButton();
-
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
-        String modelSelection = bundle.getString("modelSelection");
-
-        if (modelSelection != null && modelSelection.equals("ThinkPad W541")){
-            rowID = "1";
-        }else if (modelSelection != null && modelSelection.equals("ThinkPad P50")){
-            rowID = "2";
-        }else if (modelSelection != null && modelSelection.equals("ThinkPad Yoga P40")){
-            rowID = "3";
-        }else if (modelSelection != null && modelSelection.equals("MacBook 15\" 2017")){
-            rowID = "4";
-        }else if (modelSelection != null && modelSelection.equals("MacBook 13\" 2017")){
-            rowID = "5";
-        }else if (modelSelection != null && modelSelection.equals("MacBook 15\" Late 2015")){
-            rowID = "6";
-        }
+        rowID = bundle.getString("rowID");
 
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
@@ -112,6 +95,11 @@ public class PartsCount extends AppCompatActivity {
         textGraphicsCount.setText(itemIds.get(3));
         textMemoryCount.setText(itemIds.get(4));
         db.close();
+
+        //      Button Functions
+        homeButton();
+        countButton();
+        lowCountButton(rowID);
     }
 
     public static Intent makeIntent(Context context) {
@@ -125,7 +113,7 @@ public class PartsCount extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "HomeButton clicked");
+                Log.i(TAG, "HomeButton clickedfrom PartsCount");
                 Toast.makeText(getApplicationContext(), "Going Back Home!", Toast.LENGTH_SHORT).show();
 
                 //Launch the MainActivity
@@ -143,9 +131,28 @@ public class PartsCount extends AppCompatActivity {
         btnCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "CountButton clicked");
-                Toast.makeText(getApplicationContext(), "This is my Toast message!",
+                Log.i(TAG, "CountButton clicked from Parts Count");
+                Toast.makeText(getApplicationContext(), "You're already in Parts Count!",
                         Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    private void lowCountButton(String rID){
+        final String rowID = rID;
+        //Wire up the lowCount button
+        ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
+        //set click listener (set what happens when it clicks)
+        btnLowCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "lowCount Button from PartsCount clicked");
+
+                //Launch the PartsCount Activity
+                Intent intent = LowCount.makeIntent(PartsCount.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("rowID", rowID);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

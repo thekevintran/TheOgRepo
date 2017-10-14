@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ public class LaptopSpec extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laptop_specs);
-
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
         String modelSelection = bundle.getString("modelSelection");
@@ -80,31 +78,31 @@ public class LaptopSpec extends AppCompatActivity {
             String itemId = cursor.getString(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_ID));
             itemIds.add(itemId);
-            Log.v(TAG, "Adding " + itemId + " to itemIds");
+//            Log.v(TAG, "Adding " + itemId + " to itemIds");
             itemId = cursor.getString(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_MODEL));
             itemIds.add(itemId);
-            Log.v(TAG, "Adding " + itemId + " to itemIds");
+//            Log.v(TAG, "Adding " + itemId + " to itemIds");
             itemId = cursor.getString(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_PROCESSOR));
             itemIds.add(itemId);
-            Log.v(TAG, "Adding " + itemId + " to itemIds");
+//            Log.v(TAG, "Adding " + itemId + " to itemIds");
             itemId = cursor.getString(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_GRAPHICS));
             itemIds.add(itemId);
-            Log.v(TAG, "Adding " + itemId + " to itemIds");
+//            Log.v(TAG, "Adding " + itemId + " to itemIds");
             itemId = cursor.getString(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_MEMORY));
             itemIds.add(itemId);
-            Log.v(TAG, "Adding " + itemId + " to itemIds");
+//            Log.v(TAG, "Adding " + itemId + " to itemIds");
         }
         cursor.close();
-        /* Check for reading all elements in the list
+        //Check for reading all elements in the list
         for (int i=0;i < itemIds.size();i++)
         {
             Log.i("Value of element "+i,itemIds.get(i));
         }
-        */
+
         TextView textModel = (TextView) findViewById(R.id.modelName);
         TextView textProcessor = (TextView) findViewById(R.id.processorName);
         TextView textGraphics = (TextView) findViewById(R.id.graphicsName);
@@ -114,8 +112,11 @@ public class LaptopSpec extends AppCompatActivity {
         textGraphics.setText(itemIds.get(3));
         textMemory.setText(itemIds.get(4));
         db.close();
+
+        //      Button Functions
         homeButton();
-        countButton(modelSelection);
+        countButton(rowID);
+        lowCountButton(rowID);
     }
 
 
@@ -142,23 +143,44 @@ public class LaptopSpec extends AppCompatActivity {
         });
     }
 
-    private void countButton(String ms){
-        final String modelSelection = ms;
+    private void countButton(String rID){
+        final String rowID = rID;
         //Wire up the count button
         ImageButton btnCount = (ImageButton) findViewById(R.id.countButton);
         //set click listener (set what happens when it clicks)
         btnCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "CountButton clicked");
+                Log.i(TAG, "CountButton clicked from LaptopSpec");
                 //Toast.makeText(getApplicationContext(), "Going to Parts Count!", Toast.LENGTH_SHORT).show();
 
-                //Launch the MainActivity
+                //Launch the PartsCount Activity
                 Intent intent = PartsCount.makeIntent(LaptopSpec.this);
                 Bundle bundle = new Bundle();
-                bundle.putString("modelSelection", modelSelection);
+                bundle.putString("rowID", rowID);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
+            }
+        });
+    }
+    private void lowCountButton(String rID){
+        final String rowID = rID;
+        //Wire up the lowCount button
+        ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
+        //set click listener (set what happens when it clicks)
+        btnLowCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "lowCount Button clicked from LaptopSpec");
+
+                //Launch the LowCount Activity
+                Intent intent = LowCount.makeIntent(LaptopSpec.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("rowID", rowID);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
             }
         });
     }
