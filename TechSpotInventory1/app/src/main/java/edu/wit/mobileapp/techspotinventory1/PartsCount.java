@@ -15,6 +15,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PartsCount class
+ * Does something
+ */
 public class PartsCount extends AppCompatActivity {
     private final String TAG = "Inventory App";
     String rowID = "0";
