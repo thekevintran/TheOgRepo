@@ -18,6 +18,70 @@ public class LaptopSpec extends AppCompatActivity {
     private final String TAG = "Inventory App";
     String rowID = "0";
 
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, LaptopSpec.class);
+    }
+
+    private void homeButton(){
+        //Wire up the Home button
+        ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
+        //set click listener (set what happens when it clicks)
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "HomeButton clicked");
+                //Toast.makeText(getApplicationContext(), "Going Back Home!", Toast.LENGTH_SHORT).show();
+
+                //Launch the MainActivity
+                Intent intent = MainActivity.makeIntent(LaptopSpec.this);
+                startActivity(intent);
+                //Kill Laptop Spec if going back home
+                finish();
+            }
+        });
+    }
+
+    private void countButton(String rID){
+        final String rowID = rID;
+        //Wire up the count button
+        ImageButton btnCount = (ImageButton) findViewById(R.id.countButton);
+        //set click listener (set what happens when it clicks)
+        btnCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "CountButton clicked from LaptopSpec");
+                //Toast.makeText(getApplicationContext(), "Going to Parts Count!", Toast.LENGTH_SHORT).show();
+
+                //Launch the PartsCount Activity
+                Intent intent = PartsCount.makeIntent(LaptopSpec.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("rowID", rowID);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    private void lowCountButton(String rID){
+        final String rowID = rID;
+        //Wire up the lowCount button
+        ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
+        //set click listener (set what happens when it clicks)
+        btnLowCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "lowCount Button clicked from LaptopSpec");
+
+                //Launch the LowCount Activity
+                Intent intent = LowCount.makeIntent(LaptopSpec.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("rowID", rowID);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -120,68 +184,5 @@ public class LaptopSpec extends AppCompatActivity {
     }
 
 
-    public static Intent makeIntent(Context context) {
-        return new Intent(context, LaptopSpec.class);
-    }
 
-    private void homeButton(){
-        //Wire up the Home button
-        ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
-        //set click listener (set what happens when it clicks)
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "HomeButton clicked");
-                //Toast.makeText(getApplicationContext(), "Going Back Home!", Toast.LENGTH_SHORT).show();
-
-                //Launch the MainActivity
-                Intent intent = MainActivity.makeIntent(LaptopSpec.this);
-                startActivity(intent);
-                //Kill Laptop Spec if going back home
-                finish();
-            }
-        });
-    }
-
-    private void countButton(String rID){
-        final String rowID = rID;
-        //Wire up the count button
-        ImageButton btnCount = (ImageButton) findViewById(R.id.countButton);
-        //set click listener (set what happens when it clicks)
-        btnCount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "CountButton clicked from LaptopSpec");
-                //Toast.makeText(getApplicationContext(), "Going to Parts Count!", Toast.LENGTH_SHORT).show();
-
-                //Launch the PartsCount Activity
-                Intent intent = PartsCount.makeIntent(LaptopSpec.this);
-                Bundle bundle = new Bundle();
-                bundle.putString("rowID", rowID);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-    private void lowCountButton(String rID){
-        final String rowID = rID;
-        //Wire up the lowCount button
-        ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
-        //set click listener (set what happens when it clicks)
-        btnLowCount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "lowCount Button clicked from LaptopSpec");
-
-                //Launch the LowCount Activity
-                Intent intent = LowCount.makeIntent(LaptopSpec.this);
-                Bundle bundle = new Bundle();
-                bundle.putString("rowID", rowID);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
 }

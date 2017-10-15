@@ -12,7 +12,7 @@
             android:layout_marginTop="151dp"
             android:text="LOGO HERE"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/specification" />
+            android:layout_alignEnd="@+id/inventoryCountTxt" />
 
         <TextView
             android:id="@+id/modelName"
@@ -25,25 +25,24 @@
             android:text="modelName Here" />
 
         <TextView
-            android:id="@+id/specification"
+            android:id="@+id/inventoryCountTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="72dp"
-            android:text="Specifications: "
+            android:layout_marginStart="54dp"
+            android:text="Inventory Count: "
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_below="@+id/brandLogo"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/spec_processor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/specification"
-            android:layout_below="@+id/specification"
             android:layout_marginTop="26dp"
-            android:text="Processor: " />
+            android:text="Processor: "
+            android:layout_below="@+id/inventoryCountTxt"
+            android:layout_alignStart="@+id/inventoryCountTxt" />
 
         <TextView
             android:id="@+id/spec_graphics"
@@ -63,31 +62,146 @@
             android:layout_marginTop="22dp"
             android:text="Memory: " />
 
-        <TextView
-            android:id="@+id/processorCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/spec_processor"
-            android:layout_alignBottom="@+id/spec_processor"
-            android:layout_marginStart="14dp"
-            android:layout_toEndOf="@+id/spec_graphics"
-            android:text="Processor Count Here" />
+    <TextView
+        android:id="@+id/processorCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/spec_processor"
+        android:layout_alignBottom="@+id/spec_processor"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/spec_graphics"
+        android:text="P Count Here" />
 
-        <TextView
-            android:id="@+id/graphicsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/spec_graphics"
-            android:layout_alignBottom="@+id/spec_graphics"
-            android:layout_alignStart="@+id/processorCount"
-            android:text="Graphics Count Here" />
+    <TextView
+        android:id="@+id/graphicsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/spec_graphics"
+        android:layout_alignBottom="@+id/spec_graphics"
+        android:layout_alignStart="@+id/processorCount"
+        android:text="G Count Here" />
 
-        <TextView
-            android:id="@+id/memoryCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spec_memory"
-            android:layout_alignStart="@+id/graphicsCount"
-            android:text="Memory Count Here" />
+    <TextView
+        android:id="@+id/memoryCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spec_memory"
+        android:layout_alignStart="@+id/graphicsCount"
+        android:text="M Count Here" />
+
+    <TextView
+        android:id="@+id/modifyCountTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modify Count"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/inventoryCountTxt"
+        android:layout_toEndOf="@+id/inventoryCountTxt" />
+
+    <Button
+        android:id="@+id/decreaseP"
+        android:onClick="decreaseIntegerP"
+        android:text="-"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/processorCount"
+        android:layout_alignBottom="@+id/processorCount"
+        android:layout_alignStart="@+id/modifyCountTxt"
+        android:textAlignment="center"/>
+    <Button
+        android:id="@+id/decreaseG"
+        android:onClick="decreaseIntegerG"
+        android:text="-"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/graphicsCount"
+        android:layout_alignBottom="@+id/graphicsCount"
+        android:layout_alignStart="@+id/modifyCountTxt"
+        android:textAlignment="center"/>
+    <Button
+        android:id="@+id/decreaseM"
+        android:onClick="decreaseIntegerM"
+        android:text="-"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/memoryCount"
+        android:layout_alignBottom="@+id/memoryCount"
+        android:layout_alignStart="@+id/modifyCountTxt"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/modP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignBaseline="@+id/decreaseP"
+        android:layout_alignBottom="@+id/decreaseP"
+        android:layout_toEndOf="@+id/decreaseP"
+        android:layout_marginStart="3dp"
+        android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/modG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignBaseline="@+id/decreaseG"
+        android:layout_alignBottom="@+id/decreaseG"
+        android:layout_toEndOf="@+id/decreaseG"
+        android:layout_marginStart="3dp"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/modM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignBaseline="@+id/decreaseM"
+        android:layout_alignBottom="@+id/decreaseM"
+        android:layout_toEndOf="@+id/decreaseM"
+        android:layout_marginStart="3dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/increaseP"
+        android:onClick="increaseIntegerP"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/decreaseP"
+        android:layout_toEndOf="@+id/modP" />
+    <Button
+        android:id="@+id/increaseG"
+        android:onClick="increaseIntegerG"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/decreaseG"
+        android:layout_toEndOf="@+id/modG" />
+    <Button
+        android:id="@+id/increaseM"
+        android:onClick="increaseIntegerM"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/decreaseM"
+        android:layout_toEndOf="@+id/modM" />
+
+    <Button
+        android:id="@+id/commitCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Finalize Count"
+        android:layout_below="@+id/decreaseM"
+        android:layout_alignStart="@+id/decreaseM" />
 
 </RelativeLayout>
