@@ -242,7 +242,9 @@ public class PartsCount extends AppCompatActivity {
                 newValues.put("memory",countM);
                 String[] args = {rowID};
                 db.update("partsInventory", newValues, "_id=?", args);
-
+                
+                // After values are finalized/updated to the database
+                // "Refresh" the activity screen to display Values
                 finish();
                 startActivity(getIntent());
             }
