@@ -29,5 +29,14 @@
         android:layout_marginStart="17dp"
         android:layout_toEndOf="@+id/brandLogo"
         android:text="modelName Here" />
+
+
         </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lowCountList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 </RelativeLayout>

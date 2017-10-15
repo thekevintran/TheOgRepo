@@ -11,7 +11,7 @@
         android:layout_marginTop="140dp"
         android:text="LOGO HERE"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/specification" />
+        android:layout_alignEnd="@+id/inventoryCountTxt" />
 
     <TextView
         android:id="@+id/modelName"
@@ -24,7 +24,7 @@
         android:text="modelName Here" />
 
     <TextView
-        android:id="@+id/specification"
+        android:id="@+id/inventoryCountTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="74dp"
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:text="Processor: "
-        android:layout_below="@+id/specification"
-        android:layout_alignStart="@+id/specification" />
+        android:layout_below="@+id/inventoryCountTxt"
+        android:layout_alignStart="@+id/inventoryCountTxt" />
 
     <TextView
         android:id="@+id/spec_graphics"

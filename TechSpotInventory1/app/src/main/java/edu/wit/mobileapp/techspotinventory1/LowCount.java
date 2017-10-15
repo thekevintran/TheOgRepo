@@ -23,10 +23,12 @@ public class LowCount extends AppCompatActivity{
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
         String rowID = bundle.getString("rowID");
+        //Button Function Calls
+        homeButton();
+        countButton(rowID);
+        lowCountButton();
 
-//        homeButton();
-//        countButton();
-//        lowCountButton();
+
     }
 
     public static Intent makeIntent(Context context) {
@@ -51,7 +53,8 @@ public class LowCount extends AppCompatActivity{
             }
         });
     }
-    private void countButton(){
+    private void countButton(String rID){
+        rowID = rID;
         //Wire up the count button
         ImageButton btnCount = (ImageButton) findViewById(R.id.countButton);
         //set click listener (set what happens when it clicks)
@@ -60,10 +63,12 @@ public class LowCount extends AppCompatActivity{
             public void onClick(View view) {
                 Log.i(TAG, "CountButton clicked from LowCount");
 
-                //Launch the PartsCount
+                //Launch the PartsCount Activity
                 Intent intent = PartsCount.makeIntent(LowCount.this);
+                Bundle bundle = new Bundle();
+                bundle.putString("rowID", rowID);
+                intent.putExtras(bundle);
                 startActivity(intent);
-                //Kill LowCount Activity if going back home
                 finish();
             }
         });
@@ -77,6 +82,7 @@ public class LowCount extends AppCompatActivity{
             public void onClick(View view) {
                 Log.i(TAG, "CountButton clicked from LowCount");
                 Toast.makeText(getApplicationContext(), "You're already in Low Count!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
