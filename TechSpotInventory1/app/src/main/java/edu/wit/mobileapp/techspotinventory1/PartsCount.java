@@ -19,8 +19,10 @@ import java.util.List;
 
 /**
  * PartsCount class
- * Does something
+ * Displays the PartsInventory.db's row values depending on Laptop Model
+ * Row values may be edited in this Activity
  */
+
 public class PartsCount extends AppCompatActivity {
     private final String TAG = "Inventory App";
     String rowID = "0";
@@ -242,7 +244,7 @@ public class PartsCount extends AppCompatActivity {
                 newValues.put("memory",countM);
                 String[] args = {rowID};
                 db.update("partsInventory", newValues, "_id=?", args);
-                
+
                 // After values are finalized/updated to the database
                 // "Refresh" the activity screen to display Values
                 finish();
