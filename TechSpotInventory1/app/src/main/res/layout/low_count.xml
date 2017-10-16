@@ -30,13 +30,16 @@
         android:layout_toEndOf="@+id/brandLogo"
         android:text="modelName Here" />
 
+        <ListView
+            android:id="@+id/lowCountList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="83dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/brandLogo"
+            android:layout_alignEnd="@+id/modelName">
 
+
+            </ListView>
         </RelativeLayout>
-
-    <ListView
-        android:id="@+id/lowCountList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
 </RelativeLayout>

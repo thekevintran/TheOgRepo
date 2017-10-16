@@ -29,7 +29,9 @@ public class PartsCount extends AppCompatActivity {
     int mPCount = 0;
     int mGCount = 0;
     int mMCount = 0;
-
+    int countP = 0;
+    int countG = 0;
+    int countM = 0;
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, PartsCount.class);
@@ -66,8 +68,12 @@ public class PartsCount extends AppCompatActivity {
             }
         });
     }
-    private void lowCountButton(String rID){
+    private void lowCountButton(String rID, int cP, int cG, int cM){
         rowID = rID;
+        countP = cP;
+        countG = cG;
+        countM = cM;
+
         //Wire up the lowCount button
         ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
         //set click listener (set what happens when it clicks)
@@ -80,6 +86,9 @@ public class PartsCount extends AppCompatActivity {
                 Intent intent = LowCount.makeIntent(PartsCount.this);
                 Bundle bundle = new Bundle();
                 bundle.putString("rowID", rowID);
+                bundle.putInt("countP", countP);
+                bundle.putInt("countG", countG);
+                bundle.putInt("countM", countM);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -133,7 +142,7 @@ public class PartsCount extends AppCompatActivity {
         //      Button Functions
         homeButton();
         countButton();
-        lowCountButton(rowID);
+        lowCountButton(rowID, countP, countG, countM);
 
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
@@ -203,6 +212,10 @@ public class PartsCount extends AppCompatActivity {
         textGraphicsCount.setText(itemIds.get(3));
         textMemoryCount.setText(itemIds.get(4));
 
+        countP = Integer.valueOf(textProcessorCount.getText().toString());
+        countG = Integer.valueOf(textGraphicsCount.getText().toString());
+        countM = Integer.valueOf(textMemoryCount.getText().toString());
+
         //Wire up the commitCount button
         Button btnCommit = (Button) findViewById(R.id.commitCount);
         //set click listener (set what happens when it clicks)
@@ -251,8 +264,5 @@ public class PartsCount extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
-
-
     }//closes onCreate
 }

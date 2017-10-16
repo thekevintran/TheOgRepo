@@ -4,14 +4,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/toptoolbar"/>
-    <TextView
+    <ImageView
         android:id="@+id/brandLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:text="LOGO HERE"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/inventoryCountTxt" />
+        android:layout_alignEnd="@+id/inventoryCountTxt"
+        app:srcCompat="@android:drawable/IMAGEHERE"/>
+
 
     <TextView
         android:id="@+id/modelName"
@@ -88,5 +89,7 @@
         android:layout_alignBottom="@+id/spec_memory"
         android:layout_alignStart="@+id/graphicsName"
         android:text="Memory Here" />
+
+
 
 </RelativeLayout>
