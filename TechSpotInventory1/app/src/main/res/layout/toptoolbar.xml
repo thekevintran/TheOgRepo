@@ -8,10 +8,10 @@
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginEnd="31dp"
+        android:layout_toStartOf="@+id/countButton"
+        android:backgroundTint="@color/colorPrimaryLight"
         app:srcCompat="@android:drawable/ic_menu_compass" />
     <TextView
         android:id="@+id/homeTxt"
@@ -22,30 +22,35 @@
         android:layout_below="@+id/homeButton"
         android:text="Home"
         android:textAlignment="center" />
+
     <ImageButton
         android:id="@+id/countButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_compass"
-        android:layout_alignTop="@+id/homeButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="28dp"
+        android:layout_toStartOf="@+id/lowCountButton"
+        android:backgroundTint="@color/colorPrimaryLight"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
     <TextView
         android:id="@+id/countTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/countButton"
-        android:layout_alignStart="@+id/countButton"
-        android:layout_below="@+id/countButton"
         android:text="Parts RW"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_marginRight="106dp"
+        android:layout_below="@+id/countButton"
+        android:layout_alignStart="@+id/countButton" />
+
     <ImageButton
         android:id="@+id/lowCountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_compass"
-        android:layout_alignTop="@+id/countButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="30dp" />
+        android:layout_alignTop="@+id/countButton"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/colorPrimaryLight"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
     <TextView
         android:id="@+id/lowCountTxt"
         android:layout_width="wrap_content"
@@ -54,5 +59,15 @@
         android:textAlignment="center"
         android:layout_below="@+id/lowCountButton"
         android:layout_alignStart="@+id/lowCountButton" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/wentworth_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/homeTxt"
+        android:layout_toStartOf="@+id/homeTxt" />
 
 </RelativeLayout>

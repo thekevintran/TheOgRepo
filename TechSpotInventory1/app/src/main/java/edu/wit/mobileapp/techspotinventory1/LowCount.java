@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,7 +21,8 @@ import java.util.ArrayList;
 
 public class LowCount extends AppCompatActivity{
     private final String TAG = "Inventory App";
-    String rowID = "0";
+    String rowID = "";
+    String model ="";
     int countP = 0;
     int countG = 0;
     int countM = 0;
@@ -42,6 +45,7 @@ public class LowCount extends AppCompatActivity{
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
         rowID = bundle.getString("rowID");
+        model = bundle.getString("model");
         countP = bundle.getInt("countP");
         countG = bundle.getInt("countG");
         countM = bundle.getInt("countM");
@@ -61,6 +65,20 @@ public class LowCount extends AppCompatActivity{
         if(countM < 4){
             listData.add("Processor: " + countM);
         }
+
+        //Sets logo image based on rowID
+        //Note: add the column "brand" into table
+        ImageView img = (ImageView) findViewById(R.id.brandLogo);
+        if (rowID.equalsIgnoreCase("1") || rowID.equalsIgnoreCase("2") || rowID.equalsIgnoreCase("3")) {
+            img.setImageResource(R.mipmap.lenovo_logo2);
+        }
+        else {
+            img.setImageResource(R.mipmap.apple);
+        }
+
+        TextView textModel = (TextView) findViewById(R.id.modelName);
+                textModel.setText(model);
+
 
 
 
