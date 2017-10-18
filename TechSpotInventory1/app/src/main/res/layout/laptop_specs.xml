@@ -4,54 +4,57 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/toptoolbar"/>
-    <TextView
+    <ImageView
         android:id="@+id/brandLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:text="LOGO HERE"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/inventoryCountTxt" />
+
 
     <TextView
         android:id="@+id/modelName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/brandLogo"
-        android:layout_alignBottom="@+id/brandLogo"
-        android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/brandLogo"
-        android:text="modelName Here" />
+        android:text="modelName Here"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/brandLogo"
+        android:layout_toEndOf="@+id/brandLogo" />
 
     <TextView
         android:id="@+id/inventoryCountTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/brandLogo"
         android:layout_marginStart="74dp"
         android:layout_marginTop="77dp"
         android:text="Specifications: "
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/brandLogo"
-        android:layout_alignParentStart="true" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/spec_processor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/inventoryCountTxt"
+        android:layout_below="@+id/inventoryCountTxt"
         android:layout_marginTop="26dp"
         android:text="Processor: "
-        android:layout_below="@+id/inventoryCountTxt"
-        android:layout_alignStart="@+id/inventoryCountTxt" />
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/spec_graphics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Graphics: "
-        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@+id/spec_processor"
         android:layout_below="@+id/spec_processor"
-        android:layout_alignEnd="@+id/spec_processor" />
+        android:layout_marginTop="20dp"
+        android:text="Graphics: "
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/spec_memory"
@@ -60,26 +63,29 @@
         android:layout_alignEnd="@+id/spec_processor"
         android:layout_below="@+id/spec_graphics"
         android:layout_marginTop="22dp"
-        android:text="Memory: " />
+        android:text="Memory: "
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/processorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Processor Here"
-        android:layout_marginStart="14dp"
         android:layout_alignBaseline="@+id/spec_processor"
         android:layout_alignBottom="@+id/spec_processor"
-        android:layout_toEndOf="@+id/spec_graphics" />
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/spec_graphics"
+        android:text="Processor Here"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/graphicsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Graphics Here"
         android:layout_alignBaseline="@+id/spec_graphics"
         android:layout_alignBottom="@+id/spec_graphics"
-        android:layout_alignStart="@+id/processorName" />
+        android:layout_alignStart="@+id/processorName"
+        android:text="Graphics Here"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/memoryName"
@@ -87,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/spec_memory"
         android:layout_alignStart="@+id/graphicsName"
-        android:text="Memory Here" />
+        android:text="Memory Here"
+        android:textColor="@android:color/black" />
 
 </RelativeLayout>

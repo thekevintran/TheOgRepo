@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,12 +60,10 @@ public class LaptopSpec extends AppCompatActivity {
                 bundle.putString("rowID", rowID);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                finish();
             }
         });
     }
-    private void lowCountButton(String rID){
-        final String rowID = rID;
+    private void lowCountButton(){
         //Wire up the lowCount button
         ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
         //set click listener (set what happens when it clicks)
@@ -71,14 +71,7 @@ public class LaptopSpec extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "lowCount Button clicked from LaptopSpec");
-
-                //Launch the LowCount Activity
-                Intent intent = LowCount.makeIntent(LaptopSpec.this);
-                Bundle bundle = new Bundle();
-                bundle.putString("rowID", rowID);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
+                Toast.makeText(getApplicationContext(), "Please proceed through Parts Count", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -167,6 +160,16 @@ public class LaptopSpec extends AppCompatActivity {
             Log.i("Value of element "+i,itemIds.get(i));
         }
 
+        //Sets logo image based on rowID
+        //Note: add the column "brand" into table
+        ImageView img = (ImageView) findViewById(R.id.brandLogo);
+        if (rowID.equalsIgnoreCase("1") || rowID.equalsIgnoreCase("2") || rowID.equalsIgnoreCase("3")) {
+            img.setImageResource(R.mipmap.lenovo_logo2);
+        }
+        else {
+            img.setImageResource(R.mipmap.apple);
+        }
+
         TextView textModel = (TextView) findViewById(R.id.modelName);
         TextView textProcessor = (TextView) findViewById(R.id.processorName);
         TextView textGraphics = (TextView) findViewById(R.id.graphicsName);
@@ -180,7 +183,7 @@ public class LaptopSpec extends AppCompatActivity {
         //      Button Functions
         homeButton();
         countButton(rowID);
-        lowCountButton(rowID);
+        lowCountButton();
     }
 
 
