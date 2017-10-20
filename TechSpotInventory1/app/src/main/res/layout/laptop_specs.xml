@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/toptoolbar"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:backgroundTint="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toptoolbar" />
+
     <ImageView
         android:id="@+id/brandLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_alignEnd="@+id/inventoryCountTxt"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/inventoryCountTxt" />
+        android:layout_marginTop="140dp" />
 
 
     <TextView
         android:id="@+id/modelName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/brandLogo"
+        android:layout_toEndOf="@+id/brandLogo"
         android:text="modelName Here"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_alignTop="@+id/brandLogo"
-        android:layout_toEndOf="@+id/brandLogo" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/inventoryCountTxt"
