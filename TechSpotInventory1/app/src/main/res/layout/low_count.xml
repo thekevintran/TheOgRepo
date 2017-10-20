@@ -3,12 +3,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/toptoolbar" />
+    <include layout="@layout/toptoolbar"
+        android:id="@+id/include" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/brandLogo"
@@ -26,24 +29,34 @@
             android:id="@+id/modelName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/brandLogo"
-            android:layout_alignBottom="@+id/brandLogo"
-            android:layout_marginStart="17dp"
-            android:layout_toEndOf="@+id/brandLogo"
+            android:layout_marginStart="30dp"
             android:text="modelName Here"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="30sp"
+            android:layout_alignBottom="@+id/brandLogo"
+            android:layout_toEndOf="@+id/brandLogo" />
 
         <ListView
             android:id="@+id/lowCountList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="83dp"
-            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/brandLogo"
-            android:layout_alignEnd="@+id/modelName">
+            android:layout_marginTop="120dp"
+            android:background="@android:color/white"
+            android:backgroundTint="@android:color/white">
 
 
-            </ListView>
+        </ListView>
         </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Part Name] :   [Part Count]"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/include"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="193dp" />
 </RelativeLayout>
