@@ -9,17 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
-        <activity android:name=".ModelApple"/>
-        <activity android:name=".ModelLenovo"/>
-        <activity android:name=".LaptopSpec"/>
-        <activity android:name=".PartsCount"/>
-        <activity android:name=".LowCount"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ModelApple"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ModelLenovo"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LaptopSpec"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PartsCount"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LowCount"
+            android:screenOrientation="portrait"/>
 
     </application>
 

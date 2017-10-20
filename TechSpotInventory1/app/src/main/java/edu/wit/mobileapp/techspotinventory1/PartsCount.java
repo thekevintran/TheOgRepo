@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +27,13 @@ import java.util.List;
 public class PartsCount extends AppCompatActivity {
     private final String TAG = "Inventory App";
     String rowID = "0";
+    String model = "";
     int mPCount = 0;
     int mGCount = 0;
     int mMCount = 0;
+    int countP = 0;
+    int countG = 0;
+    int countM = 0;
 
 
     public static Intent makeIntent(Context context) {
@@ -66,8 +71,13 @@ public class PartsCount extends AppCompatActivity {
             }
         });
     }
-    private void lowCountButton(String rID){
+    private void lowCountButton(String rID, String m, int cP, int cG, int cM){
         rowID = rID;
+        countP = cP;
+        countG = cG;
+        countM = cM;
+        model = m;
+
         //Wire up the lowCount button
         ImageButton btnLowCount = (ImageButton) findViewById(R.id.lowCountButton);
         //set click listener (set what happens when it clicks)
@@ -80,6 +90,10 @@ public class PartsCount extends AppCompatActivity {
                 Intent intent = LowCount.makeIntent(PartsCount.this);
                 Bundle bundle = new Bundle();
                 bundle.putString("rowID", rowID);
+                bundle.putString("model", model);
+                bundle.putInt("countP", countP);
+                bundle.putInt("countG", countG);
+                bundle.putInt("countM", countM);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -133,7 +147,7 @@ public class PartsCount extends AppCompatActivity {
         //      Button Functions
         homeButton();
         countButton();
-        lowCountButton(rowID);
+        lowCountButton(rowID, model, countP, countG, countM);
 
         // Set the path and database name
         String path = "/data/data/" + getPackageName() + "/laptopInventory.db";
@@ -168,6 +182,7 @@ public class PartsCount extends AppCompatActivity {
                 null,                                     // don't filter by row groups
                 sortOrder                                 // The sort order
         );
+
         //Reading the data into "itemIds" List Object
         List<String> itemIds = new ArrayList<>();
         while(cursor.moveToNext()) {
@@ -193,7 +208,17 @@ public class PartsCount extends AppCompatActivity {
             Log.i("Value of element "+i,itemIds.get(i));
         }
 
+        //Sets logo image based on rowID
+        //Note: add the column "brand" into table
+        ImageView img = (ImageView) findViewById(R.id.brandLogo);
+        if (rowID.equalsIgnoreCase("1") || rowID.equalsIgnoreCase("2") || rowID.equalsIgnoreCase("3")) {
+            img.setImageResource(R.mipmap.lenovo_logo2);
+        }
+        else {
+            img.setImageResource(R.mipmap.apple);
+        }
 
+        //TextView assignments
         TextView textModel = (TextView) findViewById(R.id.modelName);
         TextView textProcessorCount = (TextView) findViewById(R.id.processorCount);
         TextView textGraphicsCount = (TextView) findViewById(R.id.graphicsCount);
@@ -202,6 +227,12 @@ public class PartsCount extends AppCompatActivity {
         textProcessorCount.setText(itemIds.get(2));
         textGraphicsCount.setText(itemIds.get(3));
         textMemoryCount.setText(itemIds.get(4));
+
+        model = itemIds.get(1);
+        Log.v(TAG, "model is :: " + model);
+        countP = Integer.valueOf(textProcessorCount.getText().toString());
+        countG = Integer.valueOf(textGraphicsCount.getText().toString());
+        countM = Integer.valueOf(textMemoryCount.getText().toString());
 
         //Wire up the commitCount button
         Button btnCommit = (Button) findViewById(R.id.commitCount);
@@ -251,8 +282,5 @@ public class PartsCount extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
-
-
     }//closes onCreate
 }

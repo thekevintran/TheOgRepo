@@ -6,8 +6,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by trank on 10/13/2017.
@@ -15,21 +21,68 @@ import android.widget.Toast;
 
 public class LowCount extends AppCompatActivity{
     private final String TAG = "Inventory App";
-    String rowID = "0";
+    String rowID = "";
+    String model ="";
+    int countP = 0;
+    int countG = 0;
+    int countM = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.low_count);
+
+        //ArrayList (data)
+        ArrayList<String> listData = new ArrayList<String>();
+
+        //ListView
+        ListView lowCountList = (ListView) findViewById(R.id.lowCountList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, listData);
+
+        //Assign adapter to list
+        lowCountList.setAdapter(adapter);
+
         //      Bundle receive
         Bundle bundle = getIntent().getExtras();
-        String rowID = bundle.getString("rowID");
+        rowID = bundle.getString("rowID");
+        model = bundle.getString("model");
+        countP = bundle.getInt("countP");
+        countG = bundle.getInt("countG");
+        countM = bundle.getInt("countM");
+
         //Button Function Calls
         homeButton();
         countButton(rowID);
         lowCountButton();
 
+        // If parts are less than 4. display on listView
+        if(countP < 4){
+            listData.add("Processor: " + countP);
+        }
+        if(countG < 4){
+            listData.add("Graphics: " + countG);
+        }
+        if(countM < 4){
+            listData.add("Processor: " + countM);
+        }
 
-    }
+        //Sets logo image based on rowID
+        //Note: add the column "brand" into table
+        ImageView img = (ImageView) findViewById(R.id.brandLogo);
+        if (rowID.equalsIgnoreCase("1") || rowID.equalsIgnoreCase("2") || rowID.equalsIgnoreCase("3")) {
+            img.setImageResource(R.mipmap.lenovo_logo2);
+        }
+        else {
+            img.setImageResource(R.mipmap.apple);
+        }
+
+        TextView textModel = (TextView) findViewById(R.id.modelName);
+        textModel.setText(model);
+
+
+
+
+    }//End of onCreate
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, LowCount.class);

@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/white"
+    android:backgroundTint="@android:color/white">
+
     <include layout="@layout/toptoolbar" />
 
-        <TextView
-            android:id="@+id/brandLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="151dp"
-            android:text="LOGO HERE"
-            android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/inventoryCountTxt" />
+    <ImageView
+        android:id="@+id/brandLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/inventoryCountTxt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="151dp"
+        android:text="LOGO HERE" />
 
-        <TextView
-            android:id="@+id/modelName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/brandLogo"
-            android:layout_alignBottom="@+id/brandLogo"
-            android:layout_marginStart="17dp"
-            android:layout_toEndOf="@+id/brandLogo"
-            android:text="modelName Here" />
+    <TextView
+        android:id="@+id/modelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/brandLogo"
+        android:layout_alignBottom="@+id/brandLogo"
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/brandLogo"
+        android:text="modelName Here"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/inventoryCountTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
-            android:text="Inventory Count: "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/inventoryCountTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="54dp"
+        android:text="Inventory Count: "
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/spec_processor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:text="Processor: "
-            android:layout_below="@+id/inventoryCountTxt"
-            android:layout_alignStart="@+id/inventoryCountTxt" />
+    <TextView
+        android:id="@+id/spec_processor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/inventoryCountTxt"
+        android:layout_below="@+id/inventoryCountTxt"
+        android:layout_marginTop="26dp"
+        android:text="Processor: " />
 
-        <TextView
-            android:id="@+id/spec_graphics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/spec_processor"
-            android:layout_below="@+id/spec_processor"
-            android:layout_marginTop="20dp"
-            android:text="Graphics: " />
+    <TextView
+        android:id="@+id/spec_graphics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spec_processor"
+        android:layout_below="@+id/spec_processor"
+        android:layout_marginTop="20dp"
+        android:text="Graphics: " />
 
-        <TextView
-            android:id="@+id/spec_memory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/spec_processor"
-            android:layout_below="@+id/spec_graphics"
-            android:layout_marginTop="22dp"
-            android:text="Memory: " />
+    <TextView
+        android:id="@+id/spec_memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spec_processor"
+        android:layout_below="@+id/spec_graphics"
+        android:layout_marginTop="22dp"
+        android:text="Memory: " />
 
     <TextView
         android:id="@+id/processorCount"
@@ -93,115 +100,123 @@
         android:id="@+id/modifyCountTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modify Count"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:layout_alignBottom="@+id/inventoryCountTxt"
-        android:layout_toEndOf="@+id/inventoryCountTxt" />
+        android:layout_toEndOf="@+id/inventoryCountTxt"
+        android:text="Modify Count"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/decreaseP"
-        android:onClick="decreaseIntegerP"
-        android:text="-"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_alignBaseline="@+id/processorCount"
         android:layout_alignBottom="@+id/processorCount"
         android:layout_alignStart="@+id/modifyCountTxt"
-        android:textAlignment="center"/>
+        android:onClick="decreaseIntegerP"
+        android:text="-"
+        android:textAlignment="center" />
+
     <Button
         android:id="@+id/decreaseG"
-        android:onClick="decreaseIntegerG"
-        android:text="-"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_alignBaseline="@+id/graphicsCount"
         android:layout_alignBottom="@+id/graphicsCount"
         android:layout_alignStart="@+id/modifyCountTxt"
-        android:textAlignment="center"/>
+        android:onClick="decreaseIntegerG"
+        android:text="-"
+        android:textAlignment="center" />
+
     <Button
         android:id="@+id/decreaseM"
-        android:onClick="decreaseIntegerM"
-        android:text="-"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_alignBaseline="@+id/memoryCount"
         android:layout_alignBottom="@+id/memoryCount"
         android:layout_alignStart="@+id/modifyCountTxt"
+        android:onClick="decreaseIntegerM"
+        android:text="-"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/modP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:layout_alignBaseline="@+id/decreaseP"
         android:layout_alignBottom="@+id/decreaseP"
-        android:layout_toEndOf="@+id/decreaseP"
         android:layout_marginStart="3dp"
-        android:textSize="16sp"/>
+        android:layout_toEndOf="@+id/decreaseP"
+        android:text="0"
+        android:textSize="16sp" />
+
     <TextView
         android:id="@+id/modG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:layout_alignBaseline="@+id/decreaseG"
         android:layout_alignBottom="@+id/decreaseG"
-        android:layout_toEndOf="@+id/decreaseG"
         android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/decreaseG"
+        android:text="0"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/modM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:layout_alignBaseline="@+id/decreaseM"
         android:layout_alignBottom="@+id/decreaseM"
-        android:layout_toEndOf="@+id/decreaseM"
         android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/decreaseM"
+        android:text="0"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/increaseP"
-        android:onClick="increaseIntegerP"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_alignTop="@+id/decreaseP"
+        android:layout_toEndOf="@+id/modP"
+        android:onClick="increaseIntegerP"
         android:text="+"
         android:textAlignment="center"
         android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_alignTop="@+id/decreaseP"
-        android:layout_toEndOf="@+id/modP" />
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/increaseG"
-        android:onClick="increaseIntegerG"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_alignTop="@+id/decreaseG"
+        android:layout_toEndOf="@+id/modG"
+        android:onClick="increaseIntegerG"
         android:text="+"
         android:textAlignment="center"
         android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_alignTop="@+id/decreaseG"
-        android:layout_toEndOf="@+id/modG" />
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/increaseM"
-        android:onClick="increaseIntegerM"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_alignTop="@+id/decreaseM"
+        android:layout_toEndOf="@+id/modM"
+        android:onClick="increaseIntegerM"
         android:text="+"
         android:textAlignment="center"
         android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_alignTop="@+id/decreaseM"
-        android:layout_toEndOf="@+id/modM" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/commitCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Finalize Count"
+        android:layout_alignStart="@+id/decreaseM"
         android:layout_below="@+id/decreaseM"
-        android:layout_alignStart="@+id/decreaseM" />
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Finalize Count" />
 
 </RelativeLayout>

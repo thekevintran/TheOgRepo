@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:backgroundTint="@android:color/white"
+    android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/modelAppleText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="125dp"
-        android:text="Apple Logo Here"
-        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/modelAppleText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/modelAppleText1"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="215dp"
         android:text="Pick a Model:"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/buttonModelApple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go"
         android:layout_alignBaseline="@+id/modelAppleText2"
         android:layout_alignBottom="@+id/modelAppleText2"
-        android:layout_toEndOf="@+id/radioGroupApple" />
+        android:layout_toEndOf="@+id/radioGroupApple"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Go"
+        android:textColor="@android:color/black" />
 
     <RadioGroup
         android:id="@+id/radioGroupApple"
@@ -50,7 +46,8 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:checked="true"
-            android:text='MacBook 15" 2017' />
+            android:text='MacBook 15" 2017'
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/radioButton5"
@@ -60,7 +57,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
-            android:text='MacBook 13" 2017' />
+            android:text='MacBook 13" 2017'
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/radioButton6"
@@ -70,9 +68,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
-            android:text='MacBook 15" Late 2015' />
+            android:text='MacBook 15" Late 2015'
+            android:textColor="@android:color/black" />
 
     </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonModelApple"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/apple2" />
 
 
 </RelativeLayout>
