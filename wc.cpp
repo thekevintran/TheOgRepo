@@ -37,7 +37,7 @@ int main(int argc,char* argv[])
 						commandCount++;
 						break;
 					case '?':
-						fprintf(stderr, "Unknown option -%c. \n", optopt);
+						fprintf(stderr, "Unknown option -%c. \n", '?');
 						break;
 				}
 			}
@@ -160,16 +160,17 @@ int main(int argc,char* argv[])
 					{
 						if ((strcmp(&commands[i],"-l")) == 0)
 						{
-							printf("%d lines %d words %d characters %c", lines, words, characters, fileNames[i]);
+							printf("%d lines ", lines);
 						}
 						else if ((strcmp(&commands[i],"-w")) == 0)
 						{
-							printf("%d words", lines, words, characters, fileNames[i]);
+							printf("%d words ", words);
 						}
 						else if ((strcmp(&commands[i],"-c")) == 0)
 						{
-							printf("%d characters",characters, fileNames[i]);
+							printf("%d characters ", characters);
 						}
+						printf("%c", fileNames[i]);
 					}
 				}
 				else
