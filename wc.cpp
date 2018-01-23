@@ -10,6 +10,7 @@ int main(int argc,char *argv[])
 	char* commands[5];  //store commands
 	int commandCount = 0, fileCount = 0; //count for command and file
 	int words = 0, characters = 0, lines = 0;
+	int twords = 0, tcharacters = 0, tlines = 0;
 	FILE *fp; //file pointer
 	char input[100];
 
@@ -159,7 +160,10 @@ int main(int argc,char *argv[])
 						if (fileRead != ' ' && fileRead != '\n'){++characters;}
 					}
 				}
-				
+				tlines += lines;
+				twords += words;
+				tcharacters += characters;
+			
 				//Print lines, words, characters
 				if (commandCount > 0) //if command is greater than 0
 				{
@@ -196,5 +200,9 @@ int main(int argc,char *argv[])
 		}
 	}
 
+	if(fileCount>1)
+	{
+		printf("%d %d %d total\n", tlines, twords, tcharacters);
+	}
 return 0;
 }
