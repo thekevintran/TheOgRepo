@@ -17,41 +17,42 @@ int main(int argc,char* argv[])
 	//Check for arguments
 	if (argc > 1) //if argc has more than the executable name
 	{
-		for (int i = 1; i < argc; i++)
+		int c;
+		int f = 1;
+		char command = *argv[f];
+		while( (c = getopt(argc, argv, "lwc")) != -1)
 		{
-			int c;
-			int f = i;
-			while( (c = getopt(argc, argv, "lwc")) != -1)
+			switch(c)
 			{
-				switch(c)
-				{
-					case 'l':
-						commands[commandCount] = *argv[f];
-						commandCount++;
-						f++;
-						break;
-					case 'w':
-						commands[commandCount] = *argv[f];
-						commandCount++;
-						f++;
-						break;
-					case 'c':
-						commands[commandCount] = *argv[f];
-						commandCount++;
-						f++;
-						break;
-					default :
-						printf("Error");
-						break;
-				}
+				case 'l':
+					commands[commandCount] = *argv[f];
+					commandCount++;
+					f++;
+					break;
+				case 'w':
+					commands[commandCount] = *argv[f];
+					commandCount++;
+					f++;
+					break;
+				case 'c':
+					commands[commandCount] = *argv[f];
+					commandCount++;
+					f++;
+					break;
+				default :
+					printf("Error");
+					break;
 			}
+		}
 			
+		for (int i = f; i < argc; i++)
+		{			
 			if ((strcmp(argv[i],"-")) == 0) //Stdin if "-" declared
 			{
 				//Read stdin for lines, words, characters
 				int d;
-                		while ((d = getchar()) != EOF)
-                		{
+                while ((d = getchar()) != EOF)
+                {
 					if (commandCount > 0) //if command is greater than 0
 					{
 						for (int i = 0; i < commandCount; i++)
