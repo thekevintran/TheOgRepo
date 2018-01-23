@@ -19,8 +19,7 @@ int main(int argc,char* argv[])
 	{
 		int c;
 		int f = 1;
-		char command = *argv[f];
-		while( (c = getopt(argc, argv, "lwc")) != -1)
+		while( (c = getopt(argc, **argv, "lwc")) != -1)
 		{
 			switch(c)
 			{
