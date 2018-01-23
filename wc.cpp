@@ -20,24 +20,28 @@ int main(int argc,char* argv[])
 		for (int i = 1; i < argc; i++)
 		{
 			int c;
+			int f = i;
 			while( (c = getopt(argc, argv, "lwc")) != -1)
 			{
 				switch(c)
 				{
 					case 'l':
-						commands[commandCount] = *argv[i];
+						commands[commandCount] = *argv[f];
 						commandCount++;
+						f++;
 						break;
 					case 'w':
-						commands[commandCount] = *argv[i];
+						commands[commandCount] = *argv[f];
 						commandCount++;
+						f++;
 						break;
 					case 'c':
-						commands[commandCount] = *argv[i];
+						commands[commandCount] = *argv[f];
 						commandCount++;
+						f++;
 						break;
-					case '?':
-						fprintf(stderr, "Unknown option -%c. \n", '?');
+					default :
+						printf("Error");
 						break;
 				}
 			}
@@ -46,8 +50,8 @@ int main(int argc,char* argv[])
 			{
 				//Read stdin for lines, words, characters
 				int d;
-                while ((d = getchar()) != EOF)
-                {
+                		while ((d = getchar()) != EOF)
+                		{
 					if (commandCount > 0) //if command is greater than 0
 					{
 						for (int i = 0; i < commandCount; i++)
