@@ -7,7 +7,7 @@ int main(int argc,char *argv[])
 {
 	//declare variables
 	char* fileNames[100]; //store file names
-	char commands[5];  //store commands
+	char* commands[5];  //store commands
 	int commandCount = 0, fileCount = 0; //count for command and file
 	int words = 0, characters = 0, lines = 0;
 	FILE *fp; //file pointer
@@ -24,17 +24,17 @@ int main(int argc,char *argv[])
 			switch(c)
 			{
 				case 'l':
-					commands[commandCount] = *argv[f];
+					commands[commandCount] = argv[f];
 					commandCount++;
 					f++;
 					break;
 				case 'w':
-					commands[commandCount] = *argv[f];
+					commands[commandCount] = argv[f];
 					commandCount++;
 					f++;
 					break;
 				case 'c':
-					commands[commandCount] = *argv[f];
+					commands[commandCount] = argv[f];
 					commandCount++;
 					f++;
 					break;
@@ -56,21 +56,21 @@ int main(int argc,char *argv[])
 					{
 						for (int j = 0; j < commandCount; j++)
 						{
-							if ((strcmp(&commands[j],"-l")) == 0)
+							if ((strcmp(commands[j],"-l")) == 0)
 							{
 								if (d == '\n'){++lines;}
 							}
-							else if ((strcmp(&commands[j],"-w")) == 0)
+							else if ((strcmp(commands[j],"-w")) == 0)
 							{
 								if (d == ' ' || d == '\n'){++words;}
 							}
-							else if ((strcmp(&commands[j],"-c")) == 0)
+							else if ((strcmp(commands[j],"-c")) == 0)
 							{
 								if (d != ' ' && d != '\n'){++characters;}
 							}
 							else 
 							{
-								printf("ERROR While Reading Command");
+								printf("ERROR While Reading Command.");
 							}
 						}
 					}
@@ -85,17 +85,17 @@ int main(int argc,char *argv[])
 				//Print lines,words, characters for stdin
 				if (commandCount > 0) //if command is greater than 0
 				{
-					for (int i = 0; i < commandCount; i++)
+					for (int j = 0; j < commandCount; j++)
 					{
-						if ((strcmp(&commands[i],"-l")) == 0)
+						if ((strcmp(commands[j],"-l")) == 0)
 						{
 							printf("%d ", lines);
 						}
-						else if ((strcmp(&commands[i],"-w")) == 0)
+						else if ((strcmp(commands[j],"-w")) == 0)
 						{
 							printf("%d ", words);
 						}
-						else if ((strcmp(&commands[i],"-c")) == 0)
+						else if ((strcmp(commands[j],"-c")) == 0)
 						{
 							printf("%d ",characters);
 						}
@@ -131,17 +131,17 @@ int main(int argc,char *argv[])
 				{
 					if (commandCount > 0) //if command is greater than 0
 					{
-						for (int i = 0; i < commandCount; i++)
-						{
-							if ((strcmp(&commands[i],"-l")) == 0)
+					//	for (int j = 0; j < commandCount; j++)
+					//	{
+							if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
 							{
 								if (fileRead == '\n'){++lines;}
 							}
-							else if ((strcmp(&commands[i],"-w")) == 0)
+							else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-l")) == 0))
 							{
 								if (fileRead == ' ' || fileRead == '\n'){++words;}
 							}
-							else if ((strcmp(&commands[i],"-c")) == 0)
+							else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
 							{
 								if (fileRead != ' ' && fileRead != '\n'){++characters;}
 							}
@@ -149,7 +149,7 @@ int main(int argc,char *argv[])
 							{
 								printf("ERROR While Reading Command");
 							}
-						}
+					//	}
 					}
 					else 
 					{
@@ -163,23 +163,24 @@ int main(int argc,char *argv[])
 				//Print lines, words, characters
 				if (commandCount > 0) //if command is greater than 0
 				{
-					printf("%d %d %d %s", lines, words, characters, fileNames[i]);
-					for (int i = 0; i < commandCount; i++)
+					for (int j = 0; j < commandCount; j++)
 					{
-						if ((strcmp(&commands[i],"-l")) == 0)
+						if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
 						{
 							printf("%d ", lines);
 						}
-						else if ((strcmp(&commands[i],"-w")) == 0)
+						
+						else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-l")) == 0))	
 						{
 							printf("%d ", words);
 						}
-						else if ((strcmp(&commands[i],"-c")) == 0)
+						
+						else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))	
 						{
 							printf("%d ", characters);
 						}
-						printf("%s", fileNames[i]);
 					}
+					printf("%s\n", fileNames[i]);
 				}
 				else
 				{
