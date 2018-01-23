@@ -2,14 +2,15 @@
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <getopt.h>
 
-int main(int argc,char **argv)
+int main(int argc,char *argv[])
 {
 	//declare variables
-	char fileNames[10]; //store file names
+	char* fileNames[100]; //store file names
 	char commands[5];  //store commands
 	int commandCount = 0, fileCount = 0; //count for command and file
-	int words = 0, characters = 0, lines = 0, c;
+	int words = 0, characters = 0, lines = 0;
 	FILE *fp; //file pointer
 	char input[100];
 
@@ -108,7 +109,7 @@ int main(int argc,char **argv)
 			}
 			else //FileName input 
 			{
-				fileNames[fileCount] = *argv[i]; //store filename in array 
+				fileNames[fileCount] = argv[i]; //store filename in array 
 				fileCount++;
 			}
 		}
@@ -120,7 +121,7 @@ int main(int argc,char **argv)
 		for (int i = 0; i < fileCount; i++)
 		{
 			int fileRead = '\0';
-			fp = fopen(&fileNames[i], "r");
+			fp = fopen(fileNames[i], "r");
 			if (fp) //if file is valid
 			{
 				while ((fileRead=getc(fp)) != EOF) //read character until end of file
@@ -159,7 +160,7 @@ int main(int argc,char **argv)
 				//Print lines, words, characters
 				if (commandCount > 0) //if command is greater than 0
 				{
-					printf("%d lines %d words %d characters %c", lines, words, characters, fileNames[i]);
+					printf("%d lines %d words %d characters %s", lines, words, characters, fileNames[i]);
 					for (int i = 0; i < commandCount; i++)
 					{
 						if ((strcmp(&commands[i],"-l")) == 0)
@@ -174,19 +175,21 @@ int main(int argc,char **argv)
 						{
 							printf("%d characters ", characters);
 						}
-						printf("%c", fileNames[i]);
+						printf("%s", fileNames[i]);
 					}
 				}
 				else
 				{
-					printf("%d lines %d words %d characters %c", lines, words, characters, fileNames[i]);
+					printf("%d lines %d words %d characters %s\n", lines, words, characters, fileNames[i]);
 				}
 			}
 			else
 			{
-				printf("Error in opening %c", fileNames[i]);
+				printf("Error in opening file: %s", fileNames[i]);
 			}
 			fclose(fp);
 		}
 	}
+
+return 0;
 }
