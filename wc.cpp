@@ -89,11 +89,11 @@ int main(int argc,char *argv[])
 						{
 							printf("%d ", lines);
 						}
-						else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
+						if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
 						{
 							printf("%d ", words);
 						}
-						else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
+						if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
 						{
 							printf("%d ",characters);
 						}
@@ -165,12 +165,12 @@ int main(int argc,char *argv[])
 							printf("%d ", lines);
 						}
 						
-						else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-l")) == 0))	
+						if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-l")) == 0))	
 						{
 							printf("%d ", words);
 						}
 						
-						else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))	
+						if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))	
 						{
 							printf("%d ", characters);
 						}
