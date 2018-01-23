@@ -202,7 +202,31 @@ int main(int argc,char *argv[])
 
 	if(fileCount>1)
 	{
-		printf("%d %d %d total\n", tlines, twords, tcharacters);
+		if (commandCount > 0) //if command is greater than 0
+				{
+					for(int j = 0; j < commandCount; j++)
+					{
+						if ((strcmp(commands[j],"-l")) == 0)
+						{
+							printf("%d ", tlines);
+						}
+						
+						if ((strcmp(commands[j],"-w")) == 0)
+						{
+							printf("%d ", twords);
+						}
+						
+						if ((strcmp(commands[j],"-c")) == 0)
+						{
+							printf("%d ", tcharacters);
+						}
+					}
+					printf("total\n");
+				}
+		else
+		{
+			printf("%d %d %d total\n", tlines, twords, tcharacters);
+		}
 	}
 return 0;
 }
