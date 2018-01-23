@@ -51,8 +51,8 @@ int main(int argc,char *argv[])
 			{
 				//Read stdin for lines, words, characters
 				int d;
-                		while ((d = getchar()) != EOF)
-                		{
+                while ((d = getchar()) != EOF)
+                {
 					if (commandCount > 0) //if command is greater than 0
 					{
 						for (int j = 0; j < commandCount; j++)
@@ -101,10 +101,11 @@ int main(int argc,char *argv[])
 							printf("%d ",characters);
 						}
 					}
+					printf("\n");
 				}
 				else
 				{
-					printf("%d %d %d ", lines, words, characters);
+					printf("%d %d %d \n", lines, words, characters);
 				}
 			}
 			else //FileName input 
@@ -114,6 +115,95 @@ int main(int argc,char *argv[])
 			}
 		}
 	}
+	else //stdin input if no arguments
+	{
+		int c;
+		int f = 1;
+		while( (c = getopt(argc, argv, "lwc")) != -1)
+		{
+			switch(c)
+			{
+				case 'l':
+					commands[commandCount] = argv[f];
+					commandCount++;
+					f++;
+					break;
+				case 'w':
+					commands[commandCount] = argv[f];
+					commandCount++;
+					f++;
+					break;
+				case 'c':
+					commands[commandCount] = argv[f];
+					commandCount++;
+					f++;
+					break;
+				default :
+					printf("Error");
+					break;
+			}
+		}
+		
+	//Read stdin for lines, words, characters
+			int d;
+			while ((d = getchar()) != EOF)
+			{
+				if (commandCount > 0) //if command is greater than 0
+				{
+					for (int j = 0; j < commandCount; j++)
+					{
+						if ((strcmp(commands[j],"-l")) == 0)
+						{
+							if (d == '\n'){++lines;}
+						}
+						else if ((strcmp(commands[j],"-w")) == 0)
+						{
+							if (d == ' ' || d == '\n'){++words;}
+						}
+						else if ((strcmp(commands[j],"-c")) == 0)
+						{
+							if (d != ' ' && d != '\n'){++characters;}
+						}
+						else 
+						{
+							printf("ERROR While Reading Command.");
+						}
+					}
+				}
+				else 
+				{
+					//display everything
+					if (d == '\n'){++lines;}
+					if (d == ' ' || d == '\n'){++words;}
+					if (d != ' ' && d != '\n'){++characters;}
+				}
+			}
+		//Print lines,words, characters for stdin
+		if (commandCount > 0) //if command is greater than 0
+		{
+			for (int j = 0; j < commandCount; j++)
+			{
+				if ((strcmp(commands[j],"-l")) == 0) 
+				{
+					printf("%d ", lines);
+				}
+				if ((strcmp(commands[j],"-w")) == 0) 
+				{
+					printf("%d ", words);
+				}
+				if ((strcmp(commands[j],"-c")) == 0) 
+				{
+					printf("%d ",characters);
+				}
+			}
+			printf("\n");
+		}
+		else
+		{
+			printf("%d %d %d \n", lines, words, characters);
+		}	
+	}
+		
 	
 	//go through each file and calculate specific command
 	if(fileCount > 0)
