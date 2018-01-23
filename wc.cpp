@@ -159,7 +159,7 @@ int main(int argc,char **argv)
 				//Print lines, words, characters
 				if (commandCount > 0) //if command is greater than 0
 				{
-					printf("%d lines %d words %d characters %c", lines, words, characters, &fileNames[i]);
+					printf("%d lines %d words %d characters %c", lines, words, characters, fileNames[i]);
 					for (int i = 0; i < commandCount; i++)
 					{
 						if ((strcmp(&commands[i],"-l")) == 0)
@@ -174,17 +174,17 @@ int main(int argc,char **argv)
 						{
 							printf("%d characters ", characters);
 						}
-						printf("%c", &fileNames[i]);
+						printf("%c", fileNames[i]);
 					}
 				}
 				else
 				{
-					printf("%d lines %d words %d characters %c", lines, words, characters, &fileNames[i]);
+					printf("%d lines %d words %d characters %c", lines, words, characters, fileNames[i]);
 				}
 			}
 			else
 			{
-				printf("Error in opening %c", &fileNames[i]);
+				printf("Error in opening %c", fileNames[i]);
 			}
 			fclose(fp);
 		}
