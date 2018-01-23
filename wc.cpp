@@ -128,17 +128,17 @@ int main(int argc,char *argv[])
 				{
 					if (commandCount > 0) //if command is greater than 0
 					{
-					//	for (int j = 0; j < commandCount; j++)
-					//	{
-							if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
+						for (int j = 0; j < commandCount; j++)
+						{
+							if ((strcmp(commands[j],"-l")) == 0) //|| ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
 							{
 								if (fileRead == '\n'){++lines;}
 							}
-							else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
+							else if ((strcmp(commands[j],"-w")) == 0) //|| ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
 							{
 								if (fileRead == ' ' || fileRead == '\n'){++words;}
 							}
-							else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
+							else if ((strcmp(commands[j],"-c")) == 0) //|| ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
 							{
 								if (fileRead != ' ' && fileRead != '\n'){++characters;}
 							}
@@ -146,7 +146,7 @@ int main(int argc,char *argv[])
 							{
 								printf("ERROR While Reading Command");
 							}
-					//	}
+						}
 					}
 					else 
 					{
