@@ -56,15 +56,15 @@ int main(int argc,char *argv[])
 					{
 						for (int j = 0; j < commandCount; j++)
 						{
-							if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
+							if ((strcmp(commands[j],"-l")) == 0)
 							{
 								if (d == '\n'){++lines;}
 							}
-							else if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
+							else if ((strcmp(commands[j],"-w")) == 0)
 							{
 								if (d == ' ' || d == '\n'){++words;}
 							}
-							else if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
+							else if ((strcmp(commands[j],"-c")) == 0)
 							{
 								if (d != ' ' && d != '\n'){++characters;}
 							}
@@ -85,18 +85,21 @@ int main(int argc,char *argv[])
 				//Print lines,words, characters for stdin
 				if (commandCount > 0) //if command is greater than 0
 				{
-						if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
+					for (int j = 0; j < commandCount; j++)
+					{
+						if ((strcmp(commands[j],"-l")) == 0) 
 						{
 							printf("%d ", lines);
 						}
-						if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
+						if ((strcmp(commands[j],"-w")) == 0) 
 						{
 							printf("%d ", words);
 						}
-						if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
+						if ((strcmp(commands[j],"-c")) == 0) 
 						{
 							printf("%d ",characters);
 						}
+					}
 				}
 				else
 				{
@@ -130,15 +133,15 @@ int main(int argc,char *argv[])
 					{
 						for (int j = 0; j < commandCount; j++)
 						{
-							if ((strcmp(commands[j],"-l")) == 0) //|| ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
+							if ((strcmp(commands[j],"-l")) == 0)
 							{
 								if (fileRead == '\n'){++lines;}
 							}
-							else if ((strcmp(commands[j],"-w")) == 0) //|| ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-w")) == 0))
+							else if ((strcmp(commands[j],"-w")) == 0)
 							{
 								if (fileRead == ' ' || fileRead == '\n'){++words;}
 							}
-							else if ((strcmp(commands[j],"-c")) == 0) //|| ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))
+							else if ((strcmp(commands[j],"-c")) == 0)
 							{
 								if (fileRead != ' ' && fileRead != '\n'){++characters;}
 							}
@@ -160,21 +163,24 @@ int main(int argc,char *argv[])
 				//Print lines, words, characters
 				if (commandCount > 0) //if command is greater than 0
 				{
-						if (((strcmp(commands[0],"-l")) == 0) || ((strcmp(commands[1],"-l")) == 0) || ((strcmp(commands[2],"-l")) == 0))
+					for(int j = 0; j < commandCount; j++)
+					{
+						if ((strcmp(commands[j],"-l")) == 0)
 						{
 							printf("%d ", lines);
 						}
 						
-						if (((strcmp(commands[0],"-w")) == 0) || ((strcmp(commands[1],"-w")) == 0) || ((strcmp(commands[2],"-l")) == 0))	
+						if ((strcmp(commands[j],"-w")) == 0)
 						{
 							printf("%d ", words);
 						}
 						
-						if (((strcmp(commands[0],"-c")) == 0) || ((strcmp(commands[1],"-c")) == 0) || ((strcmp(commands[2],"-c")) == 0))	
+						if ((strcmp(commands[j],"-c")) == 0)
 						{
 							printf("%d ", characters);
 						}
-						printf("%s\n", fileNames[i]);
+					}
+					printf("%s\n", fileNames[i]);
 				}
 				
 				else
