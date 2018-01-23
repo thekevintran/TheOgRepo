@@ -50,8 +50,8 @@ int main(int argc,char* argv[])
 			{
 				//Read stdin for lines, words, characters
 				int d;
-                while ((d = getchar()) != EOF)
-                {
+                		while ((d = getchar()) != EOF)
+                		{
 					if (commandCount > 0) //if command is greater than 0
 					{
 						for (int i = 0; i < commandCount; i++)
