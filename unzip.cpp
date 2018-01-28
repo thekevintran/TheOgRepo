@@ -30,6 +30,9 @@ int main (int argc, char* argv[])
 			pf = fopen (argv[1], "r");
 			if (pf == NULL)
 				{cout  << "Error opening file\n"; return 0;}
+			size_t lastindex = fileName.find_last_of("."); 
+			string rawname = fileName.substr(0, lastindex); 
+			string newFileName = fileName + ".orig";
 		}
 		 else
 		 {printf("Error: File Extension\n"); return 0;}
