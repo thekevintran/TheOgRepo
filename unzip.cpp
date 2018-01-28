@@ -6,9 +6,7 @@ using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-  int main (int argc, char* argv[])
+int main (int argc, char* argv[])
 {
 	FILE* pf;
 	map<unsigned char, unsigned int> dict;
@@ -46,25 +44,25 @@ int main()
   //WHILE NOT EOF && NOT END OF DICT
   while(!feof(pf))
   {
-    next_code = fgetc(pf);
-    if(dict.find(next_code) != dict.end())
-    {
-      cur_string = dict[cur_code].c.str();
-      cur_string += cur_char;
-    }
-    else
-    {
-      cur_string = dict[next_code].c.str();
-    }
-    
-    fputc(cur_char, stdout);
-    cur_char = cur_string[0];   
-    old_string = dict[cur_code].c_str();
-    //ADD OLD+CUR CHAR TO DICT
-    old_string = old_string + cur_char;
-      dict[i] = old_string;
-      i++;
-    cur_code = next_code;
+	next_code = fgetc(pf);
+	if(dict.find(next_code) != dict.end())
+	{
+	  cur_string = dict[cur_code].c.str();
+	  cur_string += cur_char;
+	}
+	else
+	{
+	  cur_string = dict[next_code].c.str();
+	}
+	
+	fputc(cur_char, stdout);
+	cur_char = cur_string[0];	
+	old_string = dict[cur_code].c_str();
+	//ADD OLD+CUR CHAR TO DICT
+	old_string = old_string + cur_char;
+	  dict[i] = old_string;
+	  i++;
+	cur_code = next_code;
   }
 
 
