@@ -1,6 +1,7 @@
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 
 using namespace std;
 int main (int argc, char* argv[])
@@ -13,7 +14,7 @@ int main (int argc, char* argv[])
 		return 0;
 	}
   
-  	if(pf.substr(pf.find_last_of(".") + 1) == "zip")
+  	if(pf->substr(pf->find_last_of(".") + 1) == "zip")
   	{
 		printf("Error: File ext\n");
 		return 0;
