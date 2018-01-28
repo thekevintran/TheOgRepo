@@ -14,7 +14,8 @@ int main (int argc, char* argv[])
 		return 0;
 	}
   
-  	if(pf->substr(pf->find_last_of(".") + 1) == "zip")
+	string fileName = argv[1];
+  	if(fileName.substr(fileName.find_last_of(".") + 1) == "zip")
   	{
 		printf("Error: File ext\n");
 		return 0;
