@@ -19,16 +19,14 @@ int main (int argc, char* argv[])
 		if(fileName.substr(fileName.find_last_of(".") + 1) == "zip")
 		{
 			printf("Successfully checked .zip file\n");
-			return 0;
 			pf = fopen (argv[1], "r");
 			if (pf == NULL)
-			{cout  << "Error opening file\n"; return 0;}
+				{cout  << "Error opening file\n"; return 0;}
 			else
-			{cout << "File opened\n";}
+				{cout << "File opened\n";}
 		}
 		 else
 		 {printf("Error: File Extension\n"); return 0;}
 	}
-  
   return 0;
   }
