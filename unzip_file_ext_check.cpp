@@ -17,12 +17,12 @@ int main (int argc, char* argv[])
 	string fileName = argv[1];
   	if(fileName.substr(fileName.find_last_of(".") + 1) == "zip")
   	{
-		printf("Error: File ext\n");
+		printf("Successfully checked .zip file\n");
 		return 0;
   	}
  	 else
  	 {
-		printf("Opened file\n");
+		printf("Error: File Extension\n");
  	 }
 	pf = fopen (argv[1], "r");
 
