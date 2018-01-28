@@ -35,6 +35,7 @@ int main (int argc, char* argv[])
 	{
 		dict[char(i)] = i;
 	}
+	unsigned int i =256;
 	
   //FIRST INPUT CODE WORD TO CURRENT CODE
   cur_code = fgetc(pf);
@@ -59,9 +60,8 @@ int main (int argc, char* argv[])
 	cur_char = cur_string[0];	
 	old_string = dict.find(cur_code)-> second;
 	//ADD OLD+CUR CHAR TO DICT
-	old_string = old_string + cur_char;
-	  dict[i] = (char*)old_string;
-	  i++;
+	dict[i] = ((unsigned char*)old_string.c_str() + cur_char);
+	i++;
 	cur_code = next_code;
   }
 
