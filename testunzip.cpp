@@ -5,22 +5,23 @@
 using namespace std;
 int main (int argc, char* argv[])
 {
-  //FILE CHECKS
+	FILE* pf;
+  	//FILE CHECKS
 	if (argc > 2)
 	{
 		printf("Error: More than 1 argument found\n");
 		return 0;
 	}
   
-  if(fn.substr(fn.find_last_of(".") + 1) == "zip"))
-  {
-	printf("Error: File ext\n");
-	return 0;
-  }
-  else
-  {
-	printf("Opened file\n");
-  }
+  	if(pf.substr(fn.find_last_of(".") + 1) == "zip"))
+  	{
+		printf("Error: File ext\n");
+		return 0;
+  	}
+ 	 else
+ 	 {
+		printf("Opened file\n");
+ 	 }
 	pf = fopen (argv[1], "r");
 
 	if (pf == NULL)
