@@ -66,7 +66,7 @@ int main (int argc, char* argv[])
 		cur_char = cur_string[0];	
 		old_string = dict.find(cur_code)-> second;
 		//ADD OLD+CUR CHAR TO DICT
-		dict[i] = ((unsigned char*)old_string.c_str() + cur_char);
+		dict.insert(make_pair(((unsigned char)old_string.c_str() + cur_char),i));
 		i++;
 		cur_code = next_code;
 	}
