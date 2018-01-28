@@ -38,7 +38,7 @@ int main (int argc, char* argv[])
 	
   //FIRST INPUT CODE WORD TO CURRENT CODE
   cur_code = fgetc(pf);
-  cur_char = dict[cur_code].c_str();
+  cur_char = dict.find(cur_code)-> second;
   fputc(cur_char, stdout);
   
   //WHILE NOT EOF && NOT END OF DICT
@@ -69,4 +69,4 @@ int main (int argc, char* argv[])
 	fclose(pf);
 	return 0;
 }
-
+}
