@@ -47,17 +47,17 @@ int main (int argc, char* argv[])
 	next_code = fgetc(pf);
 	if(dict.find(next_code) != dict.end())
 	{
-	  cur_string = dict[cur_code].c_str();
+	  cur_string = dict.find(cur_code)-> second;
 	  cur_string += cur_char;
 	}
 	else
 	{
-	  cur_string = dict[next_code].c_str();
+	  cur_string = dict.find(cur_code)-> second;
 	}
 	
 	fputc(cur_char, stdout);
 	cur_char = cur_string[0];	
-	old_string = dict[cur_code].c_str();
+	old_string = dict.find(cur_code)-> second;
 	//ADD OLD+CUR CHAR TO DICT
 	old_string = old_string + cur_char;
 	  dict[i] = old_string;
