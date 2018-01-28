@@ -60,7 +60,7 @@ int main (int argc, char* argv[])
 	old_string = dict.find(cur_code)-> second;
 	//ADD OLD+CUR CHAR TO DICT
 	old_string = old_string + cur_char;
-	  dict[i] = old_string;
+	  dict[i] = (char*)old_string;
 	  i++;
 	cur_code = next_code;
   }
@@ -68,5 +68,4 @@ int main (int argc, char* argv[])
 
 	fclose(pf);
 	return 0;
-}
 }
