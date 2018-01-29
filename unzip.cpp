@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <string>
 using namespace std;
@@ -9,7 +10,7 @@ using namespace std;
 int main (int argc, char* argv[])
 {
 	FILE* pf;
-	FILE* of;
+	ofstream of;
 	map<unsigned int, string> dict;
 	string cur_string;
 	string old_string;
@@ -34,13 +35,16 @@ int main (int argc, char* argv[])
 			size_t lastIndex = fileName.find_last_of("."); 
 			string rawName = fileName.substr(0, lastIndex); 
 			string newFileName = rawName + ".orig";
+			of.open(newFileName.c_str());
 		}
 		 else
 		 {printf("Error: File Extension\n"); return 0;}
 	}
 	
+	//
 	//PSEUDOCODE START!
-	//INITIALIZE DICTIONARY
+	//
+	//
 	for (unsigned int i = 0; i < 256; i++)
 	{
 		dict[i] = string(1,i);
@@ -48,10 +52,11 @@ int main (int argc, char* argv[])
 	
 	//FIRST INPUT CODE WORD TO CURRENT CODE
 	cur_code = fgetc(pf);
-	cur_char = dict[cur_code];//DOES NOT FUNCTION
-	fputc(cur_char, stdout);
-  
-	//WHILE NOT EOF && NOT END OF DICT
+	string temp = dict.find(cur_code)->second;
+	cur_char = temp[0];
+	of << cur_char;
+	
+	
 	while(!feof(pf))
 	{
 		next_code = fgetc(pf);
@@ -64,11 +69,11 @@ int main (int argc, char* argv[])
 		{
 			cur_string = dict.find(cur_code)-> second;
 		}
-	
-		fputs(cur_string, stdout);
+		
+		of << cur_string;	
 		cur_char = cur_string[0];	
-		old_string = dict.at(cur_code)-> second;
-		//ADD OLD+CUR CHAR TO DICT
+		old_string = dict.find(cur_code)-> second;
+
 		if(next_code <= 4096)
 		{
 			old_string += cur_char;
@@ -78,5 +83,6 @@ int main (int argc, char* argv[])
 		next_code++;
 	}
 	fclose(pf);
+	of.close();
 	return 0;
 }
