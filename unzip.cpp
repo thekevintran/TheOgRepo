@@ -9,12 +9,12 @@ using namespace std;
 int main (int argc, char* argv[])
 {
 	FILE* pf;
-	map<unsigned char, unsigned int> dict;
+	map<string, unsigned int> dict;
 	string cur_string;
 	string old_string;
 	unsigned char cur_char;
-	unsigned char cur_code;
-	unsigned char next_code;
+	unsigned int cur_code;
+	unsigned int next_int = 256;
   
   	//FILE ERROR CHECKS
 	if (argc > 2)
@@ -42,9 +42,8 @@ int main (int argc, char* argv[])
 	//INITIALIZE DICTIONARY
 	for (unsigned int i = 0; i < 256; i++)
 	{
-		dict[char(i)] = i;
+		dict[string(1,i)] = i;
 	}
-	unsigned int i =256;
 	
 	//FIRST INPUT CODE WORD TO CURRENT CODE
 	cur_code = fgetc(pf);
@@ -62,16 +61,19 @@ int main (int argc, char* argv[])
 		}
 		else
 		{
-		cur_string = dict.find(cur_code)-> second;
+			cur_string = dict.find(cur_code)-> second;
 		}
 	
-		fputc(cur_char, stdout);
+		fputc(cur_string, stdout);
 		cur_char = cur_string[0];	
 		old_string = dict.find(cur_code)-> second;
 		//ADD OLD+CUR CHAR TO DICT
-		dict.insert(make_pair(((unsigned char)old_string.c_str() + cur_char),i));
-		i++;
+		if(next_code <= 4096)
+		{
+			dict.insert(make_pair((old_string + cur_char),next_code));
+		}
 		cur_code = next_code;
+		next_code++;
 	}
 	fclose(pf);
 	return 0;
