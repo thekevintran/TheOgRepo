@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//function to get characters
 string get_input (FILE *file)
 {	
 	string cur;
@@ -19,8 +20,10 @@ int main (int argc, char* argv[])
 {
 	FILE* pf; //input C
 	ofstream of; //output C++
-	map<string, unsigned int> dict;
+	map<string, unsigned int> dict; //map containing string and int
 	string cur_string;
+	char cur_char;
+        unsigned int codeword;
 	unsigned int next_int = 256;
 
 	if (argc > 2)
@@ -28,48 +31,38 @@ int main (int argc, char* argv[])
 		printf("Error: More than 1 argument found\n");
 		return 0;
 	}
-	string filename(argv[1]);
-	//cout << filename << '\n';
-	//fp.open(argv[1]);
-	pf = fopen (argv[1], "r");
-	string ofilename = filename + ".zip";
-	//cout << ofilename;
-	//of.open(ofilename);
+	string filename(argv[1]); //setting filename as string
+	pf = fopen (argv[1], "r"); //read the "file.txt"
+	string ofilename = filename + ".zip"; //string with extension .zip
+	of.open(ofilename.c_str()); //open the zip
 
 	if (pf == NULL)
 	{cout  << "Error opening file\n";}
-	else
-	{cout << "File opened\n";}
 	
+	//initialize dictionary 
 	for (unsigned int i = 0; i < 256; i++)
 	{
 		dict[string(1,i)] = i;
 	}
-	//use fgetc to read char by char
-	 //Print dict for check
-	map<unsigned char*, unsigned int>::iterator it;
-	//for (it = dict.begin(); it != dict.end(); it++)
-	//{ cout << it->first << "==>" << it->second << '\n'; }
 	
+	//map<unsigned char*, unsigned int>::iterator it;
 	
-	cur_string = get_input(pf);
-	//to check if cur_string works
-	cout << "cur string = " << cur_string << '\n'; 
-	char cur_char;
-	//unsigned char addedChar;
-	//while (!feof(pf))
-	
-	//{	
+	//current string = first input character
+	cur_string = get_input(pf); 
+
+	//while there are more input characters
+	while (!feof(pf))
+	{	
+		//current char = next input char
 		cur_char = get_input(pf)[0];
-		 
-		//cout << "cur char ==> " << cur_char;
-		
-		//strcat(cur_string,cur_char);
-		//cout << "added char  " << cur_string << '\n'; 
+ 
+		//current string is not in the dictionary
 		if(dict.find(cur_string) == dict.end())
 		{
 			//codeword = currentstring's code in dict
-                        //output code word
+			codeword = dict.find(cur_string)->second;
+			//output to file
+                        of << codeword;
 
 			//add currentstring + currentchar to dic
 			cur_string = cur_string + cur_char; 
@@ -79,19 +72,20 @@ int main (int argc, char* argv[])
 			}
 			
 			cur_string = cur_char;	
-			//cout << "cannot find";//fputc(dict[cur_string],
-			
 		}
+		//current string is in the dictionary
 		else
 		{
-			//cout << "can find";
 			cur_char = get_input(pf)[0];
 			cur_string = cur_string + cur_char;
-			cout << cur_string << '\n';
+			//cout << "Found: cur_string = " << cur_string << '\t';
 		}
-	//}	
+	}	
+
+	codeword = dict.find(cur_string)->second;
+	of << codeword;
 
 	fclose(pf);
-	//ofilename.close();
+	of.close();
 	return 0;
 }
