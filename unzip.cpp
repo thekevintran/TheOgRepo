@@ -47,7 +47,7 @@ int main (int argc, char* argv[])
 	
 	//FIRST INPUT CODE WORD TO CURRENT CODE
 	cur_code = fgetc(pf);
-	cur_char = dict.find(cur_code)-> second;
+	cur_char << dict.at(cur_code);
 	fputc(cur_char, stdout);
   
 	//WHILE NOT EOF && NOT END OF DICT
@@ -70,6 +70,7 @@ int main (int argc, char* argv[])
 		//ADD OLD+CUR CHAR TO DICT
 		if(next_code <= 4096)
 		{
+			old_string += cur_char;
 			dict.insert(make_pair((old_string + cur_char),next_code));
 		}
 		cur_code = next_code;
