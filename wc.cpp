@@ -13,38 +13,40 @@ int main(int argc,char *argv[])
 	int twords = 0, tcharacters = 0, tlines = 0;
 	FILE *fp; //file pointer
 	char input[100];
-
+	int argNum = argc;
 	
-	//Check for arguments
-	if (argc > 1) //if argc has more than the executable name
+	int c;
+	int f = 1;
+	while( (c = getopt(argc, argv, "lwc")) != -1)
 	{
-		int c;
-		int f = 1;
-		while( (c = getopt(argc, argv, "lwc")) != -1)
+		switch(c)
 		{
-			switch(c)
-			{
-				case 'l':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				case 'w':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				case 'c':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				default :
-					printf("Error");
-					break;
-			}
+			case 'l':
+				commands[commandCount] = argv[f];
+				commandCount++;
+				f++;
+				argNum--;
+				break;
+			case 'w':
+				commands[commandCount] = argv[f];
+				commandCount++;
+				f++;
+				argNum--;
+				break;
+			case 'c':
+				commands[commandCount] = argv[f];
+				commandCount++;
+				f++;
+				argNum--;
+				break;
+			default :
+				printf("Error");
+				break;
 		}
-			
+	}
+	//Check for arguments
+	if (argNum > 1) //if argc has more than the executable name
+	{
 		for (int i = f; i < argc; i++)
 		{			
 			if ((strcmp(argv[i],"-")) == 0) //Stdin if "-" declared
@@ -117,33 +119,6 @@ int main(int argc,char *argv[])
 	}
 	else //stdin input if no arguments
 	{
-		int c;
-		int f = 1;
-		while( (c = getopt(argc, argv, "lwc")) != -1)
-		{
-			switch(c)
-			{
-				case 'l':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				case 'w':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				case 'c':
-					commands[commandCount] = argv[f];
-					commandCount++;
-					f++;
-					break;
-				default :
-					printf("Error");
-					break;
-			}
-		}
-		
 	//Read stdin for lines, words, characters
 			int d;
 			while ((d = getchar()) != EOF)
