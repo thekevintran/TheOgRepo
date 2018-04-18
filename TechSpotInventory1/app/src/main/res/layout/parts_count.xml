@@ -27,8 +27,10 @@
         android:layout_toEndOf="@+id/brandLogo"
         android:text="modelName Here"
         android:textColor="@android:color/black"
+
         android:textSize="30sp"
         android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/inventoryCountTxt"

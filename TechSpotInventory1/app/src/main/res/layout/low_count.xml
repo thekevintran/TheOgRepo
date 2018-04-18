@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
@@ -14,6 +16,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/toptoolbar" />
+
 
         <ImageView
             android:id="@+id/brandLogo"
@@ -31,6 +34,7 @@
             android:id="@+id/modelName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_alignBottom="@+id/brandLogo"
             android:layout_marginStart="30dp"
             android:layout_toEndOf="@+id/brandLogo"
@@ -38,6 +42,7 @@
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
+
 
         <ListView
             android:id="@+id/lowCountList"
@@ -75,4 +80,5 @@
         android:layout_above="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginStart="12dp" />
+
 </RelativeLayout>
