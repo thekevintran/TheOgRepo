@@ -25,7 +25,7 @@ import java.util.List;
 public class ModelLenovo extends AppCompatActivity{
     private RadioGroup radioGroup;
     private RadioButton radioButton;
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

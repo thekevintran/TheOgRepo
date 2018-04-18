@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 
 public class LowCount extends AppCompatActivity{
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
     String rowID = "";
     String model ="";
     int countP = 0;

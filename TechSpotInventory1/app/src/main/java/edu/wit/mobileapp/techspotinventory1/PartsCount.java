@@ -25,7 +25,7 @@ import java.util.List;
  */
 
 public class PartsCount extends AppCompatActivity {
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
     String rowID = "0";
     String model = "";
     int mPCount = 0;

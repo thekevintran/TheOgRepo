@@ -12,7 +12,7 @@ import android.widget.Button;
  */
 
 public class Login extends AppCompatActivity{
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

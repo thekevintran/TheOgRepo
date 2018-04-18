@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         //create table and insert normally
         else{
 
-            // Create table: laptopSpec
+            // Create table "laptopSpec"
             String sql = "CREATE TABLE IF NOT EXISTS laptopSpec" +
                     "(_id INTEGER PRIMARY KEY AUTOINCREMENT, model TEXT, processor TEXT, graphics TEXT, memory TEXT);";
             db.execSQL(sql);

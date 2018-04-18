@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class ModelApple extends AppCompatActivity{
     private RadioGroup radioGroup;
     private RadioButton radioButton;
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,7 +33,7 @@ public class ModelApple extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "ModelApple GoButton clicked");
-                Toast.makeText(getApplicationContext(), "Launching Lenovo Model Specifications!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Launching Apple Model Specifications!", Toast.LENGTH_SHORT).show();
 
                 //Radio group, buttons
                 radioGroup = (RadioGroup) findViewById(R.id.radioGroupApple);

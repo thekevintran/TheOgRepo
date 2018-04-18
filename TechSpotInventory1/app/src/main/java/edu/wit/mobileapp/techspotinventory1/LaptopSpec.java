@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LaptopSpec extends AppCompatActivity {
-    private final String TAG = "Inventory App";
+    private final String TAG = "Tech Spot Inventory App";
     String rowID = "0";
 
     public static Intent makeIntent(Context context) {
