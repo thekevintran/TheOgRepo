@@ -77,7 +77,9 @@ public class LowCount extends AppCompatActivity{
         }
 
         TextView textModel = (TextView) findViewById(R.id.modelName);
+
         textModel.setText(model);
+
 
 
 
